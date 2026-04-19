@@ -1,4 +1,16 @@
+#  IGNORA ARQUIVO  .gitignore
+.gitignore 
+
+# IGNORA PASTA DE AMBIENTE VIRTUAL 
 .venv
 /venv
 venv
+
+#IGNORA ARQUIVO DE CONFIGURAÇÃO DO BANCO DE DADOS
 senhadb.py
+
+#IGNORA PASTA DE INFORMAÇÕES
+/info/
+info/
+info
+.info
