@@ -1,0 +1,8 @@
+
+nome
+data de nascimento
+cpf
+ctps
+telefone
+email
+endereco
