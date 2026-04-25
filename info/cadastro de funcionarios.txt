@@ -1,3 +1,13 @@
+# TELA DE LOGIN
+> verificar usuario e senha
+> verifcar se senha ou usuario estao errados
+> verificar se usuario é admin ou user
+> verificar a condição do usuario ( bloqueado, excluido, ativo)
+
+
+
+
+
 
 nome
 data de nascimento

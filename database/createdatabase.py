@@ -29,13 +29,21 @@ def createTableUser():
     cursor = con.cursor()
     cursor.execute("""USE DBSISTEMA""")
     cursor.execute("""
-                CREATE TABLE USER(
+                CREATE TABLE IF NOT EXISTS USER(
                 IDUSER INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
                 USER VARCHAR(20) NOT NULL,
                 PASSWORD VARCHAR(20) NOT NULL,
-                USERACCESS ENUM('ADMIN', 'USER') NOT NULL
+                USERACCESS ENUM('ADMIN', 'USER', 'TESTE') NOT NULL
                 )
     """)
+    cursor.execute("""
+                   INSERT INTO  USER (USER, PASSWORD, USERACCESS)
+                   VALUES('ADMIN', 'ADMIN', 'ADMIN')
+                   """)
+    cursor.execute("""
+                   INSERT INTO  USER (USER, PASSWORD, USERACCESS)
+                   VALUES('TESTE', 'TESTE', 'TESTE')
+                   """)
     con.commit()
     con.close()
     return True

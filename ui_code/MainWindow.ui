@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>860</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>860</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuEstoque">
+    <property name="title">
+     <string>Estoque</string>
+    </property>
+    <widget class="QMenu" name="menuPedidos">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Pedidos</string>
+     </property>
+     <addaction name="actionFazer_Pedido"/>
+     <addaction name="actionConsultar_pedidos"/>
+    </widget>
+    <addaction name="action_CadProdutos"/>
+    <addaction name="menuPedidos"/>
+    <addaction name="actionCompras"/>
+    <addaction name="actionEntrada"/>
+    <addaction name="actionSa_da"/>
+    <addaction name="actionAltera_o"/>
+    <addaction name="actionBaixa"/>
+    <addaction name="actionAuditoria"/>
+   </widget>
+   <widget class="QMenu" name="menuVendas">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Vendas</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFinanceiro">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Financeiro</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuClientes">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Clientes</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuRH">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>RH</string>
+    </property>
+    <addaction name="actionCadastro_De_Funcionarios"/>
+   </widget>
+   <widget class="QMenu" name="menuajuda">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Ajuda</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAtualiza_o">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Atualização</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuconfigura_o">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>Configuração</string>
+    </property>
+    <addaction name="actionEstoque"/>
+   </widget>
+   <widget class="QMenu" name="menuSistema">
+    <property name="title">
+     <string>Sistema</string>
+    </property>
+    <addaction name="action_cad_user"/>
+    <addaction name="action_exitSystem"/>
+   </widget>
+   <addaction name="menuSistema"/>
+   <addaction name="menuEstoque"/>
+   <addaction name="menuClientes"/>
+   <addaction name="menuVendas"/>
+   <addaction name="menuFinanceiro"/>
+   <addaction name="menuRH"/>
+   <addaction name="menuconfigura_o"/>
+   <addaction name="menuajuda"/>
+   <addaction name="menuAtualiza_o"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCompras">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Compras</string>
+   </property>
+  </action>
+  <action name="actionEntrada">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Entrada</string>
+   </property>
+  </action>
+  <action name="action_CadProdutos">
+   <property name="text">
+    <string>Cadastro de Produtos</string>
+   </property>
+  </action>
+  <action name="actionSa_da">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Saída</string>
+   </property>
+  </action>
+  <action name="actionAltera_o">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Alteração</string>
+   </property>
+  </action>
+  <action name="actionBaixa">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Baixa</string>
+   </property>
+  </action>
+  <action name="actionAuditoria">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Auditoria</string>
+   </property>
+  </action>
+  <action name="actionFazer_Pedido">
+   <property name="text">
+    <string>Fazer Pedido</string>
+   </property>
+  </action>
+  <action name="actionConsultar_pedidos">
+   <property name="text">
+    <string>Consultar pedidos</string>
+   </property>
+  </action>
+  <action name="action_cad_user">
+   <property name="text">
+    <string>Cadastrar Usuário</string>
+   </property>
+  </action>
+  <action name="action_exitSystem">
+   <property name="text">
+    <string>Sair do sistema</string>
+   </property>
+  </action>
+  <action name="actionCadastro_De_Funcionarios">
+   <property name="text">
+    <string>Cadastro De Funcionarios</string>
+   </property>
+  </action>
+  <action name="actionEstoque">
+   <property name="text">
+    <string>Estoque</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

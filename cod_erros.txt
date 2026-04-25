@@ -1,0 +1,4 @@
+#   ERROS LOGIN
+    L001 = Senha do usuário inválida
+    L002 = Usuário não cadastrado no sistema
+    
