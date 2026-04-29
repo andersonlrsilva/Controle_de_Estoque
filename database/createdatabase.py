@@ -1,14 +1,14 @@
 import mysql.connector
-import senhadb
+from config import senhadb
 
 
-# EM PASSWORD SUBISTITUA POR UMA SENHA DE SUA PRFERENCIA
+# EM USER E PASSWORD SUBISTITUA POR INFOS DE SUA PRFERENCIA
 def conectadb():
     connection = mysql.connector.connect(
         host='127.0.0.1',
         port='3306',
         user=senhadb.user,
-        password=senhadb.senha
+        password=senhadb.passwd
     )
     return connection
 
@@ -49,6 +49,14 @@ def createTableUser():
     return True
 
 
-if __name__ == '__main__':
-    cria = criaDB()
+def criaDatabase():
+    criadb = criaDB()
+    if criadb is None:
+        return
     user = createTableUser()
+    if user is None:
+        return
+
+
+if __name__ == '__main__':
+    startDB = criaDatabase()

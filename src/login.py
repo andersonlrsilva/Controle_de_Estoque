@@ -1,4 +1,3 @@
-
 from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtGui import QRegularExpressionValidator, QKeyEvent
 from PySide6.QtCore import QRegularExpression, Qt

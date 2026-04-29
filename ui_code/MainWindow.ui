@@ -57,7 +57,7 @@
    </widget>
    <widget class="QMenu" name="menuVendas">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="title">
      <string>Vendas</string>
@@ -65,7 +65,7 @@
    </widget>
    <widget class="QMenu" name="menuFinanceiro">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="title">
      <string>Financeiro</string>
@@ -73,7 +73,7 @@
    </widget>
    <widget class="QMenu" name="menuClientes">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="title">
      <string>Clientes</string>
@@ -90,7 +90,7 @@
    </widget>
    <widget class="QMenu" name="menuajuda">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="title">
      <string>Ajuda</string>
@@ -98,20 +98,27 @@
    </widget>
    <widget class="QMenu" name="menuAtualiza_o">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="title">
      <string>Atualização</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuconfigura_o">
+   <widget class="QMenu" name="menuconfiguracao">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="title">
      <string>Configuração</string>
     </property>
+    <widget class="QMenu" name="menuDatabase">
+     <property name="title">
+      <string>Database</string>
+     </property>
+     <addaction name="actionRecriaDatabase"/>
+    </widget>
     <addaction name="actionEstoque"/>
+    <addaction name="menuDatabase"/>
    </widget>
    <widget class="QMenu" name="menuSistema">
     <property name="title">
@@ -126,7 +133,7 @@
    <addaction name="menuVendas"/>
    <addaction name="menuFinanceiro"/>
    <addaction name="menuRH"/>
-   <addaction name="menuconfigura_o"/>
+   <addaction name="menuconfiguracao"/>
    <addaction name="menuajuda"/>
    <addaction name="menuAtualiza_o"/>
   </widget>
@@ -212,6 +219,11 @@
   <action name="actionEstoque">
    <property name="text">
     <string>Estoque</string>
+   </property>
+  </action>
+  <action name="actionRecriaDatabase">
+   <property name="text">
+    <string>Recria Database</string>
    </property>
   </action>
  </widget>
