@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainwindow.ui'
+## Form generated from reading UI file 'MainWindow.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.0
 ##
@@ -64,6 +64,12 @@ class Ui_MainWindow(object):
         self.actionEstoque.setObjectName(u"actionEstoque")
         self.actionRecriaDatabase = QAction(MainWindow)
         self.actionRecriaDatabase.setObjectName(u"actionRecriaDatabase")
+        self.actionBuscarAtualizacao = QAction(MainWindow)
+        self.actionBuscarAtualizacao.setObjectName(u"actionBuscarAtualizacao")
+        self.actionAtualizar = QAction(MainWindow)
+        self.actionAtualizar.setObjectName(u"actionAtualizar")
+        self.actionAtualizafuturas = QAction(MainWindow)
+        self.actionAtualizafuturas.setObjectName(u"actionAtualizafuturas")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -90,9 +96,9 @@ class Ui_MainWindow(object):
         self.menuajuda = QMenu(self.menubar)
         self.menuajuda.setObjectName(u"menuajuda")
         self.menuajuda.setEnabled(True)
-        self.menuAtualiza_o = QMenu(self.menubar)
-        self.menuAtualiza_o.setObjectName(u"menuAtualiza_o")
-        self.menuAtualiza_o.setEnabled(True)
+        self.menuAtualizacao = QMenu(self.menubar)
+        self.menuAtualizacao.setObjectName(u"menuAtualizacao")
+        self.menuAtualizacao.setEnabled(True)
         self.menuconfiguracao = QMenu(self.menubar)
         self.menuconfiguracao.setObjectName(u"menuconfiguracao")
         self.menuconfiguracao.setEnabled(True)
@@ -113,7 +119,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuRH.menuAction())
         self.menubar.addAction(self.menuconfiguracao.menuAction())
         self.menubar.addAction(self.menuajuda.menuAction())
-        self.menubar.addAction(self.menuAtualiza_o.menuAction())
+        self.menubar.addAction(self.menuAtualizacao.menuAction())
         self.menuEstoque.addAction(self.action_CadProdutos)
         self.menuEstoque.addAction(self.menuPedidos.menuAction())
         self.menuEstoque.addAction(self.actionCompras)
@@ -125,6 +131,9 @@ class Ui_MainWindow(object):
         self.menuPedidos.addAction(self.actionFazer_Pedido)
         self.menuPedidos.addAction(self.actionConsultar_pedidos)
         self.menuRH.addAction(self.actionCadastro_De_Funcionarios)
+        self.menuAtualizacao.addAction(self.actionBuscarAtualizacao)
+        self.menuAtualizacao.addAction(self.actionAtualizar)
+        self.menuAtualizacao.addAction(self.actionAtualizafuturas)
         self.menuconfiguracao.addAction(self.actionEstoque)
         self.menuconfiguracao.addAction(self.menuDatabase.menuAction())
         self.menuDatabase.addAction(self.actionRecriaDatabase)
@@ -152,6 +161,9 @@ class Ui_MainWindow(object):
         self.actionCadastro_De_Funcionarios.setText(QCoreApplication.translate("MainWindow", u"Cadastro De Funcionarios", None))
         self.actionEstoque.setText(QCoreApplication.translate("MainWindow", u"Estoque", None))
         self.actionRecriaDatabase.setText(QCoreApplication.translate("MainWindow", u"Recria Database", None))
+        self.actionBuscarAtualizacao.setText(QCoreApplication.translate("MainWindow", u"Buscar Atualiza\u00e7\u00e3o", None))
+        self.actionAtualizar.setText(QCoreApplication.translate("MainWindow", u"Atualizar", None))
+        self.actionAtualizafuturas.setText(QCoreApplication.translate("MainWindow", u"Atualiza\u00e7\u00f5es futuras", None))
         self.menuEstoque.setTitle(QCoreApplication.translate("MainWindow", u"Estoque", None))
         self.menuPedidos.setTitle(QCoreApplication.translate("MainWindow", u"Pedidos", None))
         self.menuVendas.setTitle(QCoreApplication.translate("MainWindow", u"Vendas", None))
@@ -159,7 +171,7 @@ class Ui_MainWindow(object):
         self.menuClientes.setTitle(QCoreApplication.translate("MainWindow", u"Clientes", None))
         self.menuRH.setTitle(QCoreApplication.translate("MainWindow", u"RH", None))
         self.menuajuda.setTitle(QCoreApplication.translate("MainWindow", u"Ajuda", None))
-        self.menuAtualiza_o.setTitle(QCoreApplication.translate("MainWindow", u"Atualiza\u00e7\u00e3o", None))
+        self.menuAtualizacao.setTitle(QCoreApplication.translate("MainWindow", u"Atualiza\u00e7\u00e3o", None))
         self.menuconfiguracao.setTitle(QCoreApplication.translate("MainWindow", u"Configura\u00e7\u00e3o", None))
         self.menuDatabase.setTitle(QCoreApplication.translate("MainWindow", u"Database", None))
         self.menuSistema.setTitle(QCoreApplication.translate("MainWindow", u"Sistema", None))

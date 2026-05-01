@@ -96,13 +96,16 @@
      <string>Ajuda</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuAtualiza_o">
+   <widget class="QMenu" name="menuAtualizacao">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="title">
      <string>Atualização</string>
     </property>
+    <addaction name="actionBuscarAtualizacao"/>
+    <addaction name="actionAtualizar"/>
+    <addaction name="actionAtualizafuturas"/>
    </widget>
    <widget class="QMenu" name="menuconfiguracao">
     <property name="enabled">
@@ -135,7 +138,7 @@
    <addaction name="menuRH"/>
    <addaction name="menuconfiguracao"/>
    <addaction name="menuajuda"/>
-   <addaction name="menuAtualiza_o"/>
+   <addaction name="menuAtualizacao"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionCompras">
@@ -224,6 +227,21 @@
   <action name="actionRecriaDatabase">
    <property name="text">
     <string>Recria Database</string>
+   </property>
+  </action>
+  <action name="actionBuscarAtualizacao">
+   <property name="text">
+    <string>Buscar Atualização</string>
+   </property>
+  </action>
+  <action name="actionAtualizar">
+   <property name="text">
+    <string>Atualizar</string>
+   </property>
+  </action>
+  <action name="actionAtualizafuturas">
+   <property name="text">
+    <string>Atualizações futuras</string>
    </property>
   </action>
  </widget>

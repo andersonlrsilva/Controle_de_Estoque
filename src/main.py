@@ -29,8 +29,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # MENU
 # MENU SISTEMA
         self.action_exitSystem.triggered.connect(self.exitsystem)
-# MENU CONFIGURAÇÃO > DATABASE > RECRIA DATABASE
-# MENU UPDATE >
+# MENU ATUALIZAÇÃO > BUSCAR ATUALIZAÇÃO
+        self.actionBuscarAtualizacao.triggered.connect(self.buscaAtualizacao)
 
 # FUNÇÕES DO SISTEMA
     # sair do sistema
@@ -38,18 +38,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for widget in QApplication.allWidgets():
             widget.close()
         # exit()
+
+    def buscaAtualizacao(self):
+        ...
+
+
     # INICIA O PROGRAMA
-
-
 if __name__ == "__main__":
-    db = Database()
-    test = db.connect()
-    if test is False:
-        msgInitTest()
-        main = MainWindow('sair')
-        main.exitsystem()
+    # db = Database()
+    # test = db.connect()
+    # if test is False:
+    #     msgInitTest()
+    #     main = MainWindow('sair')
+    #     main.exitsystem()
+
+    # app = QApplication()
+    # window = login.Login()
+    # window.show()
+    # app.exec()
 
     app = QApplication()
-    window = login.Login()
+    window = MainWindow('anderson')
     window.show()
     app.exec()
