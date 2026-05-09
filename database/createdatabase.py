@@ -1,5 +1,5 @@
 import mysql.connector
-from config import senhadb
+import senhadb
 
 
 # EM USER E PASSWORD SUBISTITUA POR INFOS DE SUA PRFERENCIA

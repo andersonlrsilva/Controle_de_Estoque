@@ -60,3 +60,21 @@ def msgGeneric():
     msg.setWindowTitle('Erro ao tentar Logon')
     msg.setText(msg_text)
     msg.exec()
+
+
+# MENSAGEM DE TEXTO PARA USUARIO OU SENHA VAZIOS
+def msgUpDate(versao):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Icon.Warning)
+    msg.setWindowTitle('Atualização encontrada')
+    msg.setText(f'Atualização para a versao {versao} esta disponivel.')
+    msg.exec()
+
+
+def msgUpdWarning():
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Icon.Warning)
+    msg.setWindowTitle('Erro de Atualização')
+    msg.setText('Não foi possível buscar o servidor de atualização.\n'
+                'Entre em contato com o suporte e informe o código UPD0001')
+    msg.exec()

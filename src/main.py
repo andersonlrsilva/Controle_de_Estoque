@@ -1,8 +1,14 @@
+import subprocess
 from classes.message import msgInitTest
 from classes.database import Database
 from ui.mainwindow import Ui_MainWindow
 import login
 from PySide6.QtWidgets import QApplication, QMainWindow
+import update
+from multiprocessing import Process
+import sys
+
+# DETACHED_PROCESS = 0X00000008
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -29,7 +35,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # MENU
 # MENU SISTEMA
         self.action_exitSystem.triggered.connect(self.exitsystem)
-# MENU ATUALIZAÇÃO > BUSCAR ATUALIZAÇÃO
+# MENU ATUALIZAÇÃO >
+        # Busca Atualização
         self.actionBuscarAtualizacao.triggered.connect(self.buscaAtualizacao)
 
 # FUNÇÕES DO SISTEMA
@@ -40,8 +47,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # exit()
 
     def buscaAtualizacao(self):
-        ...
+        self.w = update.Update()
+        self.w.show()
 
+        # upd = [sys.executable, "update.py"]
+
+        # proc = subprocess.Popen(upd,
+        #                         creationflags=DETACHED_PROCESS,
+        #                         close_fds=False)
 
     # INICIA O PROGRAMA
 if __name__ == "__main__":
