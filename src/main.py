@@ -1,14 +1,11 @@
-import subprocess
-from classes.message import msgInitTest
-from classes.database import Database
+# from classes.message import msgInitTest
+# from classes.database import Database
 from ui.mainwindow import Ui_MainWindow
-import login
+# import login
 from PySide6.QtWidgets import QApplication, QMainWindow
 import update
-from multiprocessing import Process
-import sys
-
-# DETACHED_PROCESS = 0X00000008
+# from multiprocessing import Process
+# import sys
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -24,7 +21,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 # AJUSTES DO MENU
         # ITENS DESABILITADOS
-        self.menuEstoque.setDisabled(True)
+        # self.menuEstoque.setDisabled(True)
         self.menuClientes.setDisabled(True)
         self.menuVendas.setDisabled(True)
         self.menuFinanceiro.setDisabled(True)
@@ -50,13 +47,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.w = update.Update()
         self.w.show()
 
-        # upd = [sys.executable, "update.py"]
-
-        # proc = subprocess.Popen(upd,
-        #                         creationflags=DETACHED_PROCESS,
-        #                         close_fds=False)
-
     # INICIA O PROGRAMA
+
+
 if __name__ == "__main__":
     # db = Database()
     # test = db.connect()
