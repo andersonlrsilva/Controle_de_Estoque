@@ -4,8 +4,6 @@ from ui.mainwindow import Ui_MainWindow
 # import login
 from PySide6.QtWidgets import QApplication, QMainWindow
 import update
-# from multiprocessing import Process
-# import sys
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -21,12 +19,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 # AJUSTES DO MENU
         # ITENS DESABILITADOS
-        # self.menuEstoque.setDisabled(True)
         self.menuClientes.setDisabled(True)
         self.menuVendas.setDisabled(True)
         self.menuFinanceiro.setDisabled(True)
         self.menuRH.setDisabled(True)
-        # self.menuconfigura_o.setDisabled(True)
         self.menuajuda.setDisabled(True)
 
 # MENU
@@ -41,7 +37,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def exitsystem(self):
         for widget in QApplication.allWidgets():
             widget.close()
-        # exit()
+            exit()
 
     def buscaAtualizacao(self):
         self.w = update.Update()
