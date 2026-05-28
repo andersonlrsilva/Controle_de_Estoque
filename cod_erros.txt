@@ -1,7 +1,0 @@
-#   ERROS LOGIN
-    L001 = Senha do usuário inválida
-    L002 = Usuário não cadastrado no sistema
-    
-
-# ERROS DE ATUALIZAÇÃO
-    UPD001 =    Não foi possivel localizar o servidor de atualização
