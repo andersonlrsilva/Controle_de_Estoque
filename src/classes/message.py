@@ -53,7 +53,7 @@ def msgInitTestLogin():
 
 
 # MENSAGEM DE TEXTO PARA USUARIO OU SENHA VAZIOS
-def msgGeneric():
+def msgUserEmpty():
     msg_text = ('Nome de Usuario ou senha não podem estar vazios')
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Icon.Warning)
@@ -77,4 +77,13 @@ def msgUpdWarning():
     msg.setWindowTitle('Erro de Atualização')
     msg.setText('Não foi possível buscar o servidor de atualização.\n'
                 'Entre em contato com o suporte e informe o código UPD0001')
+    msg.exec()
+
+
+# MENSAGEM DE TEXTO GENERICA
+def msgGeneric(title, text):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Icon.Warning)
+    msg.setWindowTitle(title)
+    msg.setText(text)
     msg.exec()
