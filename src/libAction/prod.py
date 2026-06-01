@@ -1,9 +1,26 @@
 from classes import message
 from classes.database import Database
+from ui.addProd import Ui_AddProd
+
+
+# ATUALIZAR COMBOBOX FABRICANTE
+def updateComboBox(args):
+    db = Database()
+    con = db.connect()
+    if con is False:
+        return
+    cursor = con.cursor()
+    string = f'SELECT {args} FROM {args}'
+    cursor.execute(string)
+    dados = cursor.fetchall()
+    print(dados)
+    return dados
+
+
 # CADASTRO DE PRODUTOS
-
-
 # FUNÇÃO PARA VALIDAÇÃO DO NOME DO PRODUTO
+
+
 def prodName(name):
     text = 'O nome do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
@@ -14,7 +31,7 @@ def prodName(name):
         return name
 
 
-# FUNÇÃO PARA VALIDAÇÃO DO NOME COMECIAL DO PRODUTO
+# FUNÇÃO PARA VALIDAÇÃO DO NOME COMERCIAL DO PRODUTO
 def prodComName(prodName):
     text = 'O nome comercial do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
@@ -58,8 +75,19 @@ def prodbarcode(barcode):
         return barcode
 
 
-# FUNÇÃO PARA VALIDAÇÃO DO CODIGO DE BARRAS
-def prodFonecedor(fornecedor):
+# FUNÇÃO PARA VALIDAÇÃO DO FABRICANTE
+def prodFabricante(fabricante):
+    text = 'O código de barras do produto não pode estar vazio'
+    title = 'Erro no Cadastro do Produto'
+    if not fabricante:
+        message.msgGeneric(title=title, text=text)
+        return None
+    else:
+        return fabricante
+
+
+# FUNÇÃO PARA VALIDAÇÃO DO FORNECEDOR
+def prodFornecedor(fornecedor):
     text = 'O código de barras do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
     if not fornecedor:
@@ -81,7 +109,8 @@ def gravaDb(**kwargs):
                  "MARCA, CODSKU, CODBARRAS, FORNECEDOR)"
                  "VALUES(%s,%s,%s,%s,%s,%s)")
     dadosProd = (kwargs['name'], kwargs['prodName'], kwargs['marca'],
-                 kwargs['sku'], kwargs['codBarras'], kwargs['fornecedor'])
+                 kwargs['sku'], kwargs['codBarras'], kwargs['fornecedor'],
+                 kwargs['fabricante'])
     cursor = con.cursor()
     con.start_transaction()
     cursor.execute(queryProd, dadosProd)

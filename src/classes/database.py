@@ -17,7 +17,9 @@ class Database():
         self.password = passwd
         self.user = user
 
+
 # INICIA CONEXÃO COM BANCO DE DADOS
+
     def connect(self):
         try:
             self.connection = mysql.connector.connect(
@@ -56,6 +58,18 @@ class Database():
             # RETORNA FALSE SE NAO ENCONTAR O NOME DE LOGIN
             else:
                 return False, 'L002'
+
+    def executaquery(self, query, dados):
+        db = Database()
+        con = db.connect()
+        if con is False:
+            return
+        else:
+            cursor = con.cursor()  # type:ignore
+            cursor.execute(query, dados)
+            dados = cursor.fetchall()
+            con.close()
+            return dados
 
 
 if __name__ == '__main__':

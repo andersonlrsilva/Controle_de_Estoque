@@ -15,206 +15,297 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
+    QHBoxLayout, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QSpacerItem, QTabWidget, QTextEdit,
     QVBoxLayout, QWidget)
 
 class Ui_AddProd(object):
     def setupUi(self, AddProd):
         if not AddProd.objectName():
             AddProd.setObjectName(u"AddProd")
-        AddProd.resize(1366, 768)
-        AddProd.setMinimumSize(QSize(1366, 768))
-        AddProd.setMaximumSize(QSize(1366, 16777215))
-        self.verticalLayout = QVBoxLayout(AddProd)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.groupBox = QGroupBox(AddProd)
+        AddProd.resize(900, 500)
+        AddProd.setMinimumSize(QSize(900, 500))
+        AddProd.setMaximumSize(QSize(900, 16777215))
+        self.verticalLayout_9 = QVBoxLayout(AddProd)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.tabWidget = QTabWidget(AddProd)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setEnabled(True)
+        self.TabDados = QWidget()
+        self.TabDados.setObjectName(u"TabDados")
+        self.groupBox = QGroupBox(self.TabDados)
         self.groupBox.setObjectName(u"groupBox")
-        self.verticalLayout_3 = QVBoxLayout(self.groupBox)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.nomeProduto = QGroupBox(self.groupBox)
-        self.nomeProduto.setObjectName(u"nomeProduto")
-        self.nomeProduto.setMinimumSize(QSize(400, 200))
-        self.nomeProduto.setMaximumSize(QSize(400, 200))
-        self.verticalLayoutWidget_4 = QWidget(self.nomeProduto)
-        self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 30, 371, 41))
-        self.layout_nome = QVBoxLayout(self.verticalLayoutWidget_4)
-        self.layout_nome.setObjectName(u"layout_nome")
-        self.layout_nome.setContentsMargins(0, 0, 0, 0)
-        self.labelNome = QLabel(self.verticalLayoutWidget_4)
-        self.labelNome.setObjectName(u"labelNome")
+        self.groupBox.setGeometry(QRect(9, 10, 851, 241))
+        self.verticalLayoutWidget_2 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 70, 151, 41))
+        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.label_2 = QLabel(self.verticalLayoutWidget_2)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setLineWidth(0)
 
-        self.layout_nome.addWidget(self.labelNome)
+        self.verticalLayout_2.addWidget(self.label_2)
 
-        self.txtNomeProd = QLineEdit(self.verticalLayoutWidget_4)
-        self.txtNomeProd.setObjectName(u"txtNomeProd")
-
-        self.layout_nome.addWidget(self.txtNomeProd)
-
-        self.verticalLayoutWidget_5 = QWidget(self.nomeProduto)
-        self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 80, 371, 41))
-        self.layout_nome_comercial = QVBoxLayout(self.verticalLayoutWidget_5)
-        self.layout_nome_comercial.setObjectName(u"layout_nome_comercial")
-        self.layout_nome_comercial.setContentsMargins(0, 0, 0, 0)
-        self.labelNomeComercial = QLabel(self.verticalLayoutWidget_5)
-        self.labelNomeComercial.setObjectName(u"labelNomeComercial")
-
-        self.layout_nome_comercial.addWidget(self.labelNomeComercial)
-
-        self.txtNomeComercial = QLineEdit(self.verticalLayoutWidget_5)
-        self.txtNomeComercial.setObjectName(u"txtNomeComercial")
-
-        self.layout_nome_comercial.addWidget(self.txtNomeComercial)
-
-        self.verticalLayoutWidget_6 = QWidget(self.nomeProduto)
-        self.verticalLayoutWidget_6.setObjectName(u"verticalLayoutWidget_6")
-        self.verticalLayoutWidget_6.setGeometry(QRect(10, 130, 371, 41))
-        self.layout_marca = QVBoxLayout(self.verticalLayoutWidget_6)
-        self.layout_marca.setObjectName(u"layout_marca")
-        self.layout_marca.setContentsMargins(0, 0, 0, 0)
-        self.labelMarca = QLabel(self.verticalLayoutWidget_6)
-        self.labelMarca.setObjectName(u"labelMarca")
-
-        self.layout_marca.addWidget(self.labelMarca)
-
-        self.txtMarca = QLineEdit(self.verticalLayoutWidget_6)
-        self.txtMarca.setObjectName(u"txtMarca")
-
-        self.layout_marca.addWidget(self.txtMarca)
-
-
-        self.horizontalLayout.addWidget(self.nomeProduto)
-
-        self.groupBox_3 = QGroupBox(self.groupBox)
-        self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setMinimumSize(QSize(400, 200))
-        self.groupBox_3.setMaximumSize(QSize(16777215, 200))
-        self.verticalLayoutWidget_7 = QWidget(self.groupBox_3)
-        self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 30, 331, 41))
-        self.CodigoSku = QVBoxLayout(self.verticalLayoutWidget_7)
-        self.CodigoSku.setObjectName(u"CodigoSku")
-        self.CodigoSku.setContentsMargins(0, 0, 0, 0)
-        self.labelCodSku = QLabel(self.verticalLayoutWidget_7)
-        self.labelCodSku.setObjectName(u"labelCodSku")
-
-        self.CodigoSku.addWidget(self.labelCodSku)
-
-        self.txtCodSku = QLineEdit(self.verticalLayoutWidget_7)
-        self.txtCodSku.setObjectName(u"txtCodSku")
-
-        self.CodigoSku.addWidget(self.txtCodSku)
-
-        self.verticalLayoutWidget_8 = QWidget(self.groupBox_3)
-        self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 80, 331, 41))
-        self.CodigoDeBarras = QVBoxLayout(self.verticalLayoutWidget_8)
-        self.CodigoDeBarras.setObjectName(u"CodigoDeBarras")
-        self.CodigoDeBarras.setContentsMargins(0, 0, 0, 0)
-        self.labelCodBarras = QLabel(self.verticalLayoutWidget_8)
-        self.labelCodBarras.setObjectName(u"labelCodBarras")
-
-        self.CodigoDeBarras.addWidget(self.labelCodBarras)
-
-        self.txtCodBarras = QLineEdit(self.verticalLayoutWidget_8)
+        self.txtCodBarras = QLineEdit(self.verticalLayoutWidget_2)
         self.txtCodBarras.setObjectName(u"txtCodBarras")
 
-        self.CodigoDeBarras.addWidget(self.txtCodBarras)
+        self.verticalLayout_2.addWidget(self.txtCodBarras)
 
-        self.verticalLayoutWidget_9 = QWidget(self.groupBox_3)
+        self.verticalLayoutWidget = QWidget(self.groupBox)
+        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
+        self.verticalLayoutWidget.setGeometry(QRect(10, 20, 151, 41))
+        self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.verticalLayoutWidget)
+        self.label.setObjectName(u"label")
+        self.label.setLineWidth(0)
+
+        self.verticalLayout.addWidget(self.label)
+
+        self.txtCodSku = QLineEdit(self.verticalLayoutWidget)
+        self.txtCodSku.setObjectName(u"txtCodSku")
+
+        self.verticalLayout.addWidget(self.txtCodSku)
+
+        self.verticalLayoutWidget_3 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
+        self.verticalLayoutWidget_3.setGeometry(QRect(170, 20, 371, 41))
+        self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.label_3 = QLabel(self.verticalLayoutWidget_3)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setLineWidth(0)
+
+        self.verticalLayout_3.addWidget(self.label_3)
+
+        self.txtNomeProd = QLineEdit(self.verticalLayoutWidget_3)
+        self.txtNomeProd.setObjectName(u"txtNomeProd")
+
+        self.verticalLayout_3.addWidget(self.txtNomeProd)
+
+        self.verticalLayoutWidget_4 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
+        self.verticalLayoutWidget_4.setGeometry(QRect(170, 70, 371, 41))
+        self.verticalLayout_4 = QVBoxLayout(self.verticalLayoutWidget_4)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.label_4 = QLabel(self.verticalLayoutWidget_4)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setLineWidth(0)
+
+        self.verticalLayout_4.addWidget(self.label_4)
+
+        self.txtNomeComercial = QLineEdit(self.verticalLayoutWidget_4)
+        self.txtNomeComercial.setObjectName(u"txtNomeComercial")
+
+        self.verticalLayout_4.addWidget(self.txtNomeComercial)
+
+        self.verticalLayoutWidget_5 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 120, 151, 41))
+        self.verticalLayout_5 = QVBoxLayout(self.verticalLayoutWidget_5)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.label_5 = QLabel(self.verticalLayoutWidget_5)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setLineWidth(0)
+
+        self.verticalLayout_5.addWidget(self.label_5)
+
+        self.txtCest = QLineEdit(self.verticalLayoutWidget_5)
+        self.txtCest.setObjectName(u"txtCest")
+
+        self.verticalLayout_5.addWidget(self.txtCest)
+
+        self.verticalLayoutWidget_6 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_6.setObjectName(u"verticalLayoutWidget_6")
+        self.verticalLayoutWidget_6.setGeometry(QRect(10, 170, 151, 41))
+        self.verticalLayout_6 = QVBoxLayout(self.verticalLayoutWidget_6)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.label_6 = QLabel(self.verticalLayoutWidget_6)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setLineWidth(0)
+
+        self.verticalLayout_6.addWidget(self.label_6)
+
+        self.txtNcm = QLineEdit(self.verticalLayoutWidget_6)
+        self.txtNcm.setObjectName(u"txtNcm")
+
+        self.verticalLayout_6.addWidget(self.txtNcm)
+
+        self.verticalLayoutWidget_7 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
+        self.verticalLayoutWidget_7.setGeometry(QRect(170, 120, 160, 41))
+        self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_7)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.label_7 = QLabel(self.verticalLayoutWidget_7)
+        self.label_7.setObjectName(u"label_7")
+
+        self.verticalLayout_7.addWidget(self.label_7)
+
+        self.cmbFabric = QComboBox(self.verticalLayoutWidget_7)
+        self.cmbFabric.setObjectName(u"cmbFabric")
+
+        self.verticalLayout_7.addWidget(self.cmbFabric)
+
+        self.verticalLayoutWidget_8 = QWidget(self.groupBox)
+        self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
+        self.verticalLayoutWidget_8.setGeometry(QRect(380, 120, 160, 41))
+        self.verticalLayout_8 = QVBoxLayout(self.verticalLayoutWidget_8)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.label_8 = QLabel(self.verticalLayoutWidget_8)
+        self.label_8.setObjectName(u"label_8")
+
+        self.verticalLayout_8.addWidget(self.label_8)
+
+        self.cmbFornec = QComboBox(self.verticalLayoutWidget_8)
+        self.cmbFornec.setObjectName(u"cmbFornec")
+
+        self.verticalLayout_8.addWidget(self.cmbFornec)
+
+        self.groupBox_2 = QGroupBox(self.groupBox)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.groupBox_2.setGeometry(QRect(660, 20, 181, 211))
+        self.groupBox_2.setAlignment(Qt.AlignCenter)
+        self.lableFoto = QLabel(self.groupBox_2)
+        self.lableFoto.setObjectName(u"lableFoto")
+        self.lableFoto.setGeometry(QRect(6, 22, 171, 151))
+        self.btnSalvaFoto = QPushButton(self.groupBox_2)
+        self.btnSalvaFoto.setObjectName(u"btnSalvaFoto")
+        self.btnSalvaFoto.setGeometry(QRect(90, 180, 81, 23))
+        self.btnRemFoto = QPushButton(self.groupBox_2)
+        self.btnRemFoto.setObjectName(u"btnRemFoto")
+        self.btnRemFoto.setGeometry(QRect(10, 180, 81, 23))
+        self.checkInativo = QCheckBox(self.groupBox)
+        self.checkInativo.setObjectName(u"checkInativo")
+        self.checkInativo.setGeometry(QRect(550, 40, 101, 17))
+        self.verticalLayoutWidget_9 = QWidget(self.groupBox)
         self.verticalLayoutWidget_9.setObjectName(u"verticalLayoutWidget_9")
-        self.verticalLayoutWidget_9.setGeometry(QRect(10, 130, 331, 41))
-        self.layoutForncedor = QVBoxLayout(self.verticalLayoutWidget_9)
-        self.layoutForncedor.setObjectName(u"layoutForncedor")
-        self.layoutForncedor.setContentsMargins(0, 0, 0, 0)
-        self.labelFornecedor = QLabel(self.verticalLayoutWidget_9)
-        self.labelFornecedor.setObjectName(u"labelFornecedor")
+        self.verticalLayoutWidget_9.setGeometry(QRect(170, 170, 160, 41))
+        self.Marca = QVBoxLayout(self.verticalLayoutWidget_9)
+        self.Marca.setObjectName(u"Marca")
+        self.Marca.setContentsMargins(0, 0, 0, 0)
+        self.label_9 = QLabel(self.verticalLayoutWidget_9)
+        self.label_9.setObjectName(u"label_9")
 
-        self.layoutForncedor.addWidget(self.labelFornecedor)
+        self.Marca.addWidget(self.label_9)
 
-        self.txtFornecedor = QLineEdit(self.verticalLayoutWidget_9)
-        self.txtFornecedor.setObjectName(u"txtFornecedor")
+        self.cmbMarca = QComboBox(self.verticalLayoutWidget_9)
+        self.cmbMarca.setObjectName(u"cmbMarca")
 
-        self.layoutForncedor.addWidget(self.txtFornecedor)
+        self.Marca.addWidget(self.cmbMarca)
 
+        self.btnAddMarca = QPushButton(self.groupBox)
+        self.btnAddMarca.setObjectName(u"btnAddMarca")
+        self.btnAddMarca.setGeometry(QRect(330, 190, 30, 21))
+        self.btnAddMarca.setMinimumSize(QSize(30, 21))
+        self.btnAddMarca.setMaximumSize(QSize(30, 21))
+        self.btnAddFabric = QPushButton(self.groupBox)
+        self.btnAddFabric.setObjectName(u"btnAddFabric")
+        self.btnAddFabric.setGeometry(QRect(330, 140, 31, 21))
+        self.btnAddFabric.setMinimumSize(QSize(31, 21))
+        self.btnAddFabric.setMaximumSize(QSize(30, 20))
+        self.addFornecedor = QPushButton(self.groupBox)
+        self.addFornecedor.setObjectName(u"addFornecedor")
+        self.addFornecedor.setGeometry(QRect(540, 140, 30, 20))
+        self.addFornecedor.setMinimumSize(QSize(30, 20))
+        self.addFornecedor.setMaximumSize(QSize(30, 20))
+        self.groupBox_3 = QGroupBox(self.TabDados)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.groupBox_3.setGeometry(QRect(10, 260, 851, 121))
+        self.groupBox_3.setFlat(False)
+        self.textAplicacao = QTextEdit(self.groupBox_3)
+        self.textAplicacao.setObjectName(u"textAplicacao")
+        self.textAplicacao.setGeometry(QRect(10, 23, 831, 91))
+        self.tabWidget.addTab(self.TabDados, "")
+        self.tab_4 = QWidget()
+        self.tab_4.setObjectName(u"tab_4")
+        self.tabWidget.addTab(self.tab_4, "")
+        self.tab_5 = QWidget()
+        self.tab_5.setObjectName(u"tab_5")
+        self.tabWidget.addTab(self.tab_5, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.tabWidget.addTab(self.tab_2, "")
+        self.tab_3 = QWidget()
+        self.tab_3.setObjectName(u"tab_3")
+        self.tabWidget.addTab(self.tab_3, "")
 
-        self.horizontalLayout.addWidget(self.groupBox_3)
+        self.verticalLayout_9.addWidget(self.tabWidget)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer = QSpacerItem(330, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-
-        self.verticalLayout_3.addLayout(self.horizontalLayout)
-
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.groupBox_4 = QGroupBox(self.groupBox)
-        self.groupBox_4.setObjectName(u"groupBox_4")
-        self.groupBox_4.setMinimumSize(QSize(0, 450))
-
-        self.horizontalLayout_2.addWidget(self.groupBox_4)
-
-
-        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-
-
-        self.verticalLayout_2.addWidget(self.groupBox)
-
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.btnGravarProd = QPushButton(AddProd)
         self.btnGravarProd.setObjectName(u"btnGravarProd")
-        self.btnGravarProd.setMinimumSize(QSize(0, 30))
-        self.btnGravarProd.setMaximumSize(QSize(150, 30))
 
-        self.horizontalLayout_5.addWidget(self.btnGravarProd)
+        self.horizontalLayout.addWidget(self.btnGravarProd)
 
         self.btnLimpaForm = QPushButton(AddProd)
         self.btnLimpaForm.setObjectName(u"btnLimpaForm")
-        self.btnLimpaForm.setMinimumSize(QSize(0, 30))
-        self.btnLimpaForm.setMaximumSize(QSize(150, 16777215))
 
-        self.horizontalLayout_5.addWidget(self.btnLimpaForm)
+        self.horizontalLayout.addWidget(self.btnLimpaForm)
 
         self.btnSair = QPushButton(AddProd)
         self.btnSair.setObjectName(u"btnSair")
-        self.btnSair.setMinimumSize(QSize(0, 30))
-        self.btnSair.setMaximumSize(QSize(150, 16777215))
 
-        self.horizontalLayout_5.addWidget(self.btnSair)
+        self.horizontalLayout.addWidget(self.btnSair)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
 
-        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
-
-
-        self.verticalLayout.addLayout(self.verticalLayout_2)
+        self.verticalLayout_9.addLayout(self.horizontalLayout)
 
 
         self.retranslateUi(AddProd)
+
+        self.tabWidget.setCurrentIndex(0)
+
 
         QMetaObject.connectSlotsByName(AddProd)
     # setupUi
 
     def retranslateUi(self, AddProd):
         AddProd.setWindowTitle(QCoreApplication.translate("AddProd", u"Form", None))
-        self.groupBox.setTitle(QCoreApplication.translate("AddProd", u"Cadastro de Produtos", None))
-        self.nomeProduto.setTitle(QCoreApplication.translate("AddProd", u"Nome do produto", None))
-        self.labelNome.setText(QCoreApplication.translate("AddProd", u"Nome", None))
-        self.labelNomeComercial.setText(QCoreApplication.translate("AddProd", u"Nome Comercial", None))
-        self.labelMarca.setText(QCoreApplication.translate("AddProd", u"Marca", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("AddProd", u"GroupBox", None))
-        self.labelCodSku.setText(QCoreApplication.translate("AddProd", u"Codigo SKU", None))
-        self.labelCodBarras.setText(QCoreApplication.translate("AddProd", u"Codigo de barras", None))
-        self.labelFornecedor.setText(QCoreApplication.translate("AddProd", u"Fornecedor", None))
-        self.groupBox_4.setTitle(QCoreApplication.translate("AddProd", u"GroupBox", None))
-        self.btnGravarProd.setText(QCoreApplication.translate("AddProd", u"Gravar Produto", None))
+        self.groupBox.setTitle(QCoreApplication.translate("AddProd", u"Dados do Produtos", None))
+        self.label_2.setText(QCoreApplication.translate("AddProd", u"C\u00f3digo de Barras", None))
+        self.label.setText(QCoreApplication.translate("AddProd", u"C\u00f3digo SKU", None))
+        self.txtCodSku.setText("")
+        self.label_3.setText(QCoreApplication.translate("AddProd", u"Nome do Produto", None))
+        self.label_4.setText(QCoreApplication.translate("AddProd", u"Nome Comercial", None))
+        self.label_5.setText(QCoreApplication.translate("AddProd", u"C\u00f3digo CEST", None))
+        self.label_6.setText(QCoreApplication.translate("AddProd", u"C\u00f3digo NCM", None))
+        self.label_7.setText(QCoreApplication.translate("AddProd", u"Fabricante", None))
+        self.label_8.setText(QCoreApplication.translate("AddProd", u"Fornecedor", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("AddProd", u"Imagem do produto", None))
+        self.lableFoto.setText("")
+        self.btnSalvaFoto.setText(QCoreApplication.translate("AddProd", u"Remover Foto", None))
+        self.btnRemFoto.setText(QCoreApplication.translate("AddProd", u"Inserir Foto", None))
+        self.checkInativo.setText(QCoreApplication.translate("AddProd", u"Produto Inativo", None))
+        self.label_9.setText(QCoreApplication.translate("AddProd", u"Marca", None))
+        self.btnAddMarca.setText(QCoreApplication.translate("AddProd", u"Add", None))
+        self.btnAddFabric.setText(QCoreApplication.translate("AddProd", u"Add", None))
+        self.addFornecedor.setText(QCoreApplication.translate("AddProd", u"Add", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("AddProd", u"Aplica\u00e7\u00e3o / Descri\u00e7\u00e3o detalhada", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabDados), QCoreApplication.translate("AddProd", u"Dados", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("AddProd", u"Estoque", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("AddProd", u"Page", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("AddProd", u"Impostos", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("AddProd", u"Pre\u00e7os e Margens", None))
+        self.btnGravarProd.setText(QCoreApplication.translate("AddProd", u"Salvar", None))
         self.btnLimpaForm.setText(QCoreApplication.translate("AddProd", u"Limpar Formulario", None))
         self.btnSair.setText(QCoreApplication.translate("AddProd", u"Sair", None))
     # retranslateUi

@@ -61,5 +61,6 @@ if __name__ == "__main__":
 
     app = QApplication()
     window = MainWindow('anderson')
+    app.setStyle("fusion")
     window.show()
     app.exec()

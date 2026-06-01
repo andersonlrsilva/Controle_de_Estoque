@@ -11,13 +11,39 @@ class addProd(QWidget, Ui_AddProd):
         self.setupUi(self)
         self.setWindowTitle('Cadastro de Produtos')
 
+# ATUALIZA FABRICANTE / MARCA / FORNECEDOR
+    def atualizaComboBox(self):
+        fabric = prod.updateComboBox('FABRICANTE')
+        for dado in fabric:  # type: ignore
+            self.cmbFabric.addItems(dado)  # type: ignore
+
+        fornc = prod.updateComboBox('FORNECEDOR')
+        for dado in fornc:  # type: ignore
+            self.cmbFornec.addItems(dado)  # type: ignore
+
+        marca = prod.updateComboBox('MARCA')
+        for dado in marca:  # type: ignore
+            self.cmbMarca.addItems(dado)  # type: ignore
+
 
 # AJUSTES
         # CODIGO SKU
         self.txtCodSku.setValidator(QDoubleValidator())
+        self.txtCodSku.setMaxLength(24)
+
         # CODIGO DE BARRAS
+        self.txtCodBarras.setMaxLength(24)
         self.txtCodBarras.setValidator(
             QDoubleValidator(bottom=0, top=9999999999))
+
+        # CMBMARCA
+        self.cmbMarca.setCurrentIndex(-1)
+
+        # CMBFABRIC
+        self.cmbFabric.setCurrentIndex(-1)
+
+        # CMBFORNEC
+        self.cmbFornec.setCurrentIndex(-1)
 
 
 # BOTÕES DO SISTEMA
@@ -25,7 +51,8 @@ class addProd(QWidget, Ui_AddProd):
         self.btnLimpaForm.clicked.connect(self.limpaForm)
         self.btnSair.clicked.connect(self.sair)
 
-# FUNÇOES DO SISTEMA
+        # FUNÇOES DO SISTEMA
+
     def incluirProd(self):
         # VALIDA NOME DO PRODUTO
         nome = prod.prodName(self.txtNomeProd.text())
@@ -38,7 +65,7 @@ class addProd(QWidget, Ui_AddProd):
             return
 
         # VALIDA MARCA DO PRODUTO
-        marca = prod.prodMarca(self.txtMarca.text())
+        marca = prod.prodMarca(self.cmbMarca.currentText())
         if marca is None:
             return
 
@@ -53,15 +80,21 @@ class addProd(QWidget, Ui_AddProd):
             return
 
         # VALIDA FORNECEDOR DO PRODUTO
-        fornecedor = prod.prodFonecedor(self.txtFornecedor.text())
+        fornecedor = prod.prodFornecedor(self.cmbFornec.currentText())
+        if fornecedor is None:
+            return
+
+        # VALIDA FABRICANTE DO PRODUTO
+        fabricante = prod.prodFabricante(self.cmbFornec.currentText())
         if fornecedor is None:
             return
 
         # GRAVA OS DADOS DO PRODUTO NO BANCO
         insert = prod.gravaDb(name=nome, prodName=nomeComercial,
                               marca=marca, sku=codSku, codBarras=codBarras,
-                              fornecedor=fornecedor)
+                              fornecedor=fornecedor, fabricante=fabricante)
 
+        # SE HOUVER ERRO NA GRAVAÇÃO DO DATABASE
         if insert is None:
             text = (f'Não foi possível gravar os dados do produto {nome}.\n'
                     f'Nenhuma alteração foi feita no banco de dados ou '
@@ -72,21 +105,24 @@ class addProd(QWidget, Ui_AddProd):
             msgGeneric(text=text, title=title)
             return
 
+        # MENNSAGEM PARA USUÁRIO SE GRAVAÇÃO FOR BEM SUCEDIDA
         if insert[0] is True:
             text = f'Produto {insert[1]} inserido com sucesso'
             print(text)
             msgGeneric(title='Cadastro com Sucesso', text=text)
+            self.limpaForm()
 
-        if insert[0] is False:
-            print(insert[0], insert[1])
+        # MENSAGEM PARA USUÁRIO CASO GRAVAÇÃO RESULTAR EM ERRO
+            if insert[0] is False:
+                print(insert[0], insert[1])
 
     def limpaForm(self):
         self.txtNomeProd.clear()
         self.txtNomeComercial.clear()
-        self.txtMarca.clear()
+        # self.txtMarca.clear()
         self.txtCodSku.clear()
         self.txtCodBarras.clear()
-        self.txtFornecedor.clear()
+        # self.txtFornecedor.clear()
 
     def sair(self):
         self.close()
@@ -95,6 +131,8 @@ class addProd(QWidget, Ui_AddProd):
 # INICIA APP
 if __name__ == '__main__':
     app = QApplication()
+    app.setStyle("Fusion")
     window = addProd()
     window.show()
+    window.atualizaComboBox()
     app.exec()
