@@ -2,7 +2,8 @@ from PySide6.QtWidgets import QApplication, QWidget
 from ui.addProd import Ui_AddProd
 from libAction import prod
 from PySide6.QtGui import QDoubleValidator
-from classes.message import msgGeneric
+from classes import message
+import addFabric
 
 
 class addProd(QWidget, Ui_AddProd):
@@ -10,20 +11,6 @@ class addProd(QWidget, Ui_AddProd):
         super(addProd, self).__init__()
         self.setupUi(self)
         self.setWindowTitle('Cadastro de Produtos')
-
-# ATUALIZA FABRICANTE / MARCA / FORNECEDOR
-    def atualizaComboBox(self):
-        fabric = prod.updateComboBox('FABRICANTE')
-        for dado in fabric:  # type: ignore
-            self.cmbFabric.addItems(dado)  # type: ignore
-
-        fornc = prod.updateComboBox('FORNECEDOR')
-        for dado in fornc:  # type: ignore
-            self.cmbFornec.addItems(dado)  # type: ignore
-
-        marca = prod.updateComboBox('MARCA')
-        for dado in marca:  # type: ignore
-            self.cmbMarca.addItems(dado)  # type: ignore
 
 
 # AJUSTES
@@ -50,8 +37,29 @@ class addProd(QWidget, Ui_AddProd):
         self.btnGravarProd.clicked.connect(self.incluirProd)
         self.btnLimpaForm.clicked.connect(self.limpaForm)
         self.btnSair.clicked.connect(self.sair)
+        self.btnAddFabric.clicked.connect(self.addFabric)
 
-        # FUNÇOES DO SISTEMA
+# FUNÇOES DO SISTEMA
+
+    # ABRE PAGINA PARA ADICIONAR FABRICANTE
+    def addFabric(self):
+        self.w = addFabric.UiFabricante()
+        self.w.show()
+
+# ATUALIZA FABRICANTE / MARCA / FORNECEDOR
+
+    def atualizaComboBox(self):
+        fabric = prod.updateComboBox('FABRICANTE')
+        for dado in fabric:  # type: ignore
+            self.cmbFabric.addItems(dado)  # type: ignore
+
+        fornc = prod.updateComboBox('FORNECEDOR')
+        for dado in fornc:  # type: ignore
+            self.cmbFornec.addItems(dado)  # type: ignore
+
+        marca = prod.updateComboBox('MARCA')
+        for dado in marca:  # type: ignore
+            self.cmbMarca.addItems(dado)  # type: ignore
 
     def incluirProd(self):
         # VALIDA NOME DO PRODUTO
@@ -85,14 +93,25 @@ class addProd(QWidget, Ui_AddProd):
             return
 
         # VALIDA FABRICANTE DO PRODUTO
-        fabricante = prod.prodFabricante(self.cmbFornec.currentText())
+        fabricante = prod.prodFabricante(self.cmbFabric.currentText())
         if fornecedor is None:
+            return
+
+        # VALIDA CODIGO CEST
+        codCest = prod.prodCest(self.txtCest.text())
+        if codCest is None:
+            return
+
+        # VALIDA CODIGO NCM
+        codNcm = prod.prodNcm(self.txtNcm.text())
+        if codNcm is None:
             return
 
         # GRAVA OS DADOS DO PRODUTO NO BANCO
         insert = prod.gravaDb(name=nome, prodName=nomeComercial,
                               marca=marca, sku=codSku, codBarras=codBarras,
-                              fornecedor=fornecedor, fabricante=fabricante)
+                              fornecedor=fornecedor, fabricante=fabricante,
+                              codncm=codNcm, codcest=codCest)
 
         # SE HOUVER ERRO NA GRAVAÇÃO DO DATABASE
         if insert is None:
@@ -102,27 +121,30 @@ class addProd(QWidget, Ui_AddProd):
                     f'Caso o problema persista, entre em contato com'
                     f'o suporte técnico')
             title = 'Erro ao salvar alterações'
-            msgGeneric(text=text, title=title)
+            message.msgGeneric(text=text, title=title)
             return
 
-        # MENNSAGEM PARA USUÁRIO SE GRAVAÇÃO FOR BEM SUCEDIDA
+        # MENSAGEM PARA USUÁRIO SE GRAVAÇÃO FOR BEM SUCEDIDA
         if insert[0] is True:
             text = f'Produto {insert[1]} inserido com sucesso'
-            print(text)
-            msgGeneric(title='Cadastro com Sucesso', text=text)
+            message.msgGeneric(title='Cadastro com Sucesso', text=text)
             self.limpaForm()
 
         # MENSAGEM PARA USUÁRIO CASO GRAVAÇÃO RESULTAR EM ERRO
             if insert[0] is False:
                 print(insert[0], insert[1])
 
+# LIMPA O FORMULARIO APÓS GRAVAR OS DADOS NO BANCO DE DADOS
     def limpaForm(self):
         self.txtNomeProd.clear()
         self.txtNomeComercial.clear()
-        # self.txtMarca.clear()
+        self.txtCest.clear()
         self.txtCodSku.clear()
         self.txtCodBarras.clear()
-        # self.txtFornecedor.clear()
+        self.txtNcm.clear()
+        self.cmbFornec.setCurrentIndex(-1)
+        self.cmbMarca.setCurrentIndex(-1)
+        self.cmbFabric.setCurrentIndex(-1)
 
     def sair(self):
         self.close()
@@ -134,5 +156,5 @@ if __name__ == '__main__':
     app.setStyle("Fusion")
     window = addProd()
     window.show()
-    window.atualizaComboBox()
+    # window.atualizaComboBox()
     app.exec()

@@ -3,20 +3,6 @@ from classes.database import Database
 from ui.addProd import Ui_AddProd
 
 
-# ATUALIZAR COMBOBOX FABRICANTE
-def updateComboBox(args):
-    db = Database()
-    con = db.connect()
-    if con is False:
-        return
-    cursor = con.cursor()
-    string = f'SELECT {args} FROM {args}'
-    cursor.execute(string)
-    dados = cursor.fetchall()
-    print(dados)
-    return dados
-
-
 # CADASTRO DE PRODUTOS
 # FUNÇÃO PARA VALIDAÇÃO DO NOME DO PRODUTO
 
@@ -88,13 +74,48 @@ def prodFabricante(fabricante):
 
 # FUNÇÃO PARA VALIDAÇÃO DO FORNECEDOR
 def prodFornecedor(fornecedor):
-    text = 'O código de barras do produto não pode estar vazio'
+    text = 'O fornecedor do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
     if not fornecedor:
         message.msgGeneric(title=title, text=text)
         return None
     else:
         return fornecedor
+
+
+# FUNÇÃO PARA VALIDAÇÃO DO CODIGO CEST
+def prodCest(cest):
+    text = 'O fornecedor do produto não pode estar vazio'
+    title = 'Erro no Cadastro do Produto'
+    if not cest:
+        message.msgGeneric(title=title, text=text)
+        return None
+    else:
+        return cest
+
+
+# FUNÇÃO PARA VALIDAÇÃO DO CODIGO NCM
+def prodNcm(ncm):
+    text = 'O fornecedor do produto não pode estar vazio'
+    title = 'Erro no Cadastro do Produto'
+    if not ncm:
+        message.msgGeneric(title=title, text=text)
+        return None
+    else:
+        return ncm
+
+
+# ATUALIZAR COMBOBOX FABRICANTE / MARCA / FORNECEDOR
+def updateComboBox(args):
+    db = Database()
+    con = db.connect()
+    if con is False:
+        return
+    cursor = con.cursor()
+    string = f'SELECT {args} FROM {args}'
+    cursor.execute(string)
+    dados = cursor.fetchall()
+    return dados
 
 
 def gravaDb(**kwargs):
@@ -106,11 +127,12 @@ def gravaDb(**kwargs):
 
     # GRAVA OS DADOS DA TABELA PRODUTO
     queryProd = ("INSERT INTO PRODUTOS (NOMEPRODUTO, NOMECOMERCIAL,"
-                 "MARCA, CODSKU, CODBARRAS, FORNECEDOR)"
-                 "VALUES(%s,%s,%s,%s,%s,%s)")
+                 "MARCA, CODSKU, CODBARRAS, FORNECEDOR, FABRICANTE,"
+                 "CODNCM, CODCEST)"
+                 "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)")
     dadosProd = (kwargs['name'], kwargs['prodName'], kwargs['marca'],
                  kwargs['sku'], kwargs['codBarras'], kwargs['fornecedor'],
-                 kwargs['fabricante'])
+                 kwargs['fabricante'], kwargs['codncm'], kwargs['codcest'])
     cursor = con.cursor()
     con.start_transaction()
     cursor.execute(queryProd, dadosProd)
@@ -118,3 +140,7 @@ def gravaDb(**kwargs):
 
     con.commit()
     return True, kwargs['name']
+
+
+teste = prodName(name='')
+print(teste)
