@@ -114,19 +114,19 @@ class Ui_AddFabricante(object):
         self.verticalLayout_6 = QVBoxLayout(self.verticalLayoutWidget_6)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.label_6 = QLabel(self.verticalLayoutWidget_6)
-        self.label_6.setObjectName(u"label_6")
+        self.labelRua = QLabel(self.verticalLayoutWidget_6)
+        self.labelRua.setObjectName(u"labelRua")
 
-        self.verticalLayout_6.addWidget(self.label_6)
+        self.verticalLayout_6.addWidget(self.labelRua)
 
-        self.lineEdit_6 = QLineEdit(self.verticalLayoutWidget_6)
-        self.lineEdit_6.setObjectName(u"lineEdit_6")
+        self.txtRua = QLineEdit(self.verticalLayoutWidget_6)
+        self.txtRua.setObjectName(u"txtRua")
 
-        self.verticalLayout_6.addWidget(self.lineEdit_6)
+        self.verticalLayout_6.addWidget(self.txtRua)
 
-        self.checkBox = QCheckBox(self.groupBox)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setGeometry(QRect(10, 450, 141, 17))
+        self.chboxFrete = QCheckBox(self.groupBox)
+        self.chboxFrete.setObjectName(u"chboxFrete")
+        self.chboxFrete.setGeometry(QRect(10, 450, 141, 17))
         self.horizontalLayoutWidget = QWidget(self.groupBox)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
         self.horizontalLayoutWidget.setGeometry(QRect(100, 510, 160, 41))
@@ -148,9 +148,9 @@ class Ui_AddFabricante(object):
         self.line.setGeometry(QRect(7, 310, 341, 20))
         self.line.setFrameShape(QFrame.Shape.HLine)
         self.line.setFrameShadow(QFrame.Shadow.Sunken)
-        self.label = QLabel(self.groupBox)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(150, 300, 61, 16))
+        self.labelEnderco = QLabel(self.groupBox)
+        self.labelEnderco.setObjectName(u"labelEnderco")
+        self.labelEnderco.setGeometry(QRect(150, 300, 61, 16))
         self.horizontalLayoutWidget_2 = QWidget(self.groupBox)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
         self.horizontalLayoutWidget_2.setGeometry(QRect(10, 380, 341, 43))
@@ -165,6 +165,7 @@ class Ui_AddFabricante(object):
         self.verticalLayout_7.addWidget(self.label_7)
 
         self.cmbEstado = QComboBox(self.horizontalLayoutWidget_2)
+        self.cmbEstado.addItem("")
         self.cmbEstado.setObjectName(u"cmbEstado")
         self.cmbEstado.setMinimumSize(QSize(130, 0))
 
@@ -180,10 +181,10 @@ class Ui_AddFabricante(object):
 
         self.verticalLayout_9.addWidget(self.label_9)
 
-        self.lineEdit_9 = QLineEdit(self.horizontalLayoutWidget_2)
-        self.lineEdit_9.setObjectName(u"lineEdit_9")
+        self.txtCep = QLineEdit(self.horizontalLayoutWidget_2)
+        self.txtCep.setObjectName(u"txtCep")
 
-        self.verticalLayout_9.addWidget(self.lineEdit_9)
+        self.verticalLayout_9.addWidget(self.txtCep)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_9)
@@ -195,10 +196,10 @@ class Ui_AddFabricante(object):
 
         self.verticalLayout_8.addWidget(self.label_8)
 
-        self.lineEdit_8 = QLineEdit(self.horizontalLayoutWidget_2)
-        self.lineEdit_8.setObjectName(u"lineEdit_8")
+        self.txtBairro = QLineEdit(self.horizontalLayoutWidget_2)
+        self.txtBairro.setObjectName(u"txtBairro")
 
-        self.verticalLayout_8.addWidget(self.lineEdit_8)
+        self.verticalLayout_8.addWidget(self.txtBairro)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_8)
@@ -214,10 +215,10 @@ class Ui_AddFabricante(object):
 
         self.verticalLayout_10.addWidget(self.label_10)
 
-        self.lineEdit_10 = QLineEdit(self.verticalLayoutWidget_10)
-        self.lineEdit_10.setObjectName(u"lineEdit_10")
+        self.txtNumero = QLineEdit(self.verticalLayoutWidget_10)
+        self.txtNumero.setObjectName(u"txtNumero")
 
-        self.verticalLayout_10.addWidget(self.lineEdit_10)
+        self.verticalLayout_10.addWidget(self.txtNumero)
 
         self.verticalLayoutWidget_11 = QWidget(self.groupBox)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
@@ -240,13 +241,13 @@ class Ui_AddFabricante(object):
         QWidget.setTabOrder(self.txtEmail, self.txtTelCtt)
         QWidget.setTabOrder(self.txtTelCtt, self.txtTelCtt_2)
         QWidget.setTabOrder(self.txtTelCtt_2, self.txtSite)
-        QWidget.setTabOrder(self.txtSite, self.lineEdit_6)
-        QWidget.setTabOrder(self.lineEdit_6, self.lineEdit_10)
-        QWidget.setTabOrder(self.lineEdit_10, self.cmbEstado)
-        QWidget.setTabOrder(self.cmbEstado, self.lineEdit_9)
-        QWidget.setTabOrder(self.lineEdit_9, self.lineEdit_8)
-        QWidget.setTabOrder(self.lineEdit_8, self.checkBox)
-        QWidget.setTabOrder(self.checkBox, self.btnSalvar)
+        QWidget.setTabOrder(self.txtSite, self.txtRua)
+        QWidget.setTabOrder(self.txtRua, self.txtNumero)
+        QWidget.setTabOrder(self.txtNumero, self.cmbEstado)
+        QWidget.setTabOrder(self.cmbEstado, self.txtCep)
+        QWidget.setTabOrder(self.txtCep, self.txtBairro)
+        QWidget.setTabOrder(self.txtBairro, self.chboxFrete)
+        QWidget.setTabOrder(self.chboxFrete, self.btnSalvar)
         QWidget.setTabOrder(self.btnSalvar, self.btnCancelar)
 
         self.retranslateUi(AddFabricante)
@@ -262,14 +263,16 @@ class Ui_AddFabricante(object):
         self.labelEmail.setText(QCoreApplication.translate("AddFabricante", u"Email", None))
         self.labelTelCtt.setText(QCoreApplication.translate("AddFabricante", u"Telefone", None))
         self.labelSite.setText(QCoreApplication.translate("AddFabricante", u"Site", None))
-        self.label_6.setText(QCoreApplication.translate("AddFabricante", u"Rua", None))
-        self.checkBox.setText(QCoreApplication.translate("AddFabricante", u"Possui Frete Proprio", None))
+        self.labelRua.setText(QCoreApplication.translate("AddFabricante", u"Rua", None))
+        self.chboxFrete.setText(QCoreApplication.translate("AddFabricante", u"Possui Frete Proprio", None))
         self.btnSalvar.setText(QCoreApplication.translate("AddFabricante", u"Salvar", None))
         self.btnCancelar.setText(QCoreApplication.translate("AddFabricante", u"Cancelar", None))
-        self.label.setText(QCoreApplication.translate("AddFabricante", u"Endere\u00e7o", None))
+        self.labelEnderco.setText(QCoreApplication.translate("AddFabricante", u"Endere\u00e7o", None))
         self.label_7.setText(QCoreApplication.translate("AddFabricante", u"Estado", None))
+        self.cmbEstado.setItemText(0, QCoreApplication.translate("AddFabricante", u"rio de janeiro", None))
+
         self.label_9.setText(QCoreApplication.translate("AddFabricante", u"CEP", None))
-        self.lineEdit_9.setText("")
+        self.txtCep.setText("")
         self.label_8.setText(QCoreApplication.translate("AddFabricante", u"Bairro", None))
         self.label_10.setText(QCoreApplication.translate("AddFabricante", u"Numero", None))
         self.labelTelCtt_2.setText(QCoreApplication.translate("AddFabricante", u"Celular / Whatsapp", None))

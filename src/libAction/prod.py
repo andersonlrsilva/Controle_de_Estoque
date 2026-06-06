@@ -11,8 +11,8 @@ def prodName(name):
     text = 'O nome do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
     if not name:
-        message.msgGeneric(title=title, text=text)
-        return None
+        # message.msgGeneric(title=title, text=text)
+        return None, message.msgGeneric(title=title, text=text)
     else:
         return name
 
@@ -110,7 +110,7 @@ def updateComboBox(args):
     db = Database()
     con = db.connect()
     if con is False:
-        return
+        return None
     cursor = con.cursor()
     string = f'SELECT {args} FROM {args}'
     cursor.execute(string)
@@ -118,13 +118,7 @@ def updateComboBox(args):
     return dados
 
 
-def gravaDb(**kwargs):
-    # INICIA A INSTANCIA DO DATABASE E A CONEXÃO
-    db = Database()
-    con = db.connect()
-    if con is False:
-        return
-
+def gravaProduto(**kwargs):
     # GRAVA OS DADOS DA TABELA PRODUTO
     queryProd = ("INSERT INTO PRODUTOS (NOMEPRODUTO, NOMECOMERCIAL,"
                  "MARCA, CODSKU, CODBARRAS, FORNECEDOR, FABRICANTE,"
@@ -133,14 +127,15 @@ def gravaDb(**kwargs):
     dadosProd = (kwargs['name'], kwargs['prodName'], kwargs['marca'],
                  kwargs['sku'], kwargs['codBarras'], kwargs['fornecedor'],
                  kwargs['fabricante'], kwargs['codncm'], kwargs['codcest'])
+    # INICIA A INSTANCIA DO DATABASE E A CONEXÃO
+    db = Database()
+    con = db.connect()
+    if con is False:
+        return
     cursor = con.cursor()
     con.start_transaction()
     cursor.execute(queryProd, dadosProd)
     id_produto = cursor.lastrowid
-
     con.commit()
+    con.close()
     return True, kwargs['name']
-
-
-teste = prodName(name='')
-print(teste)

@@ -149,18 +149,18 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_6">
      <item>
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="labelRua">
        <property name="text">
         <string>Rua</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_6"/>
+      <widget class="QLineEdit" name="txtRua"/>
      </item>
     </layout>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="chboxFrete">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -212,7 +212,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelEnderco">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -252,6 +252,11 @@
            <height>0</height>
           </size>
          </property>
+         <item>
+          <property name="text">
+           <string>rio de janeiro</string>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>
@@ -266,7 +271,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_9">
+        <widget class="QLineEdit" name="txtCep">
          <property name="text">
           <string/>
          </property>
@@ -284,7 +289,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_8"/>
+        <widget class="QLineEdit" name="txtBairro"/>
        </item>
       </layout>
      </item>
@@ -308,7 +313,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_10"/>
+      <widget class="QLineEdit" name="txtNumero"/>
      </item>
     </layout>
    </widget>
@@ -343,12 +348,12 @@
   <tabstop>txtTelCtt</tabstop>
   <tabstop>txtTelCtt_2</tabstop>
   <tabstop>txtSite</tabstop>
-  <tabstop>lineEdit_6</tabstop>
-  <tabstop>lineEdit_10</tabstop>
+  <tabstop>txtRua</tabstop>
+  <tabstop>txtNumero</tabstop>
   <tabstop>cmbEstado</tabstop>
-  <tabstop>lineEdit_9</tabstop>
-  <tabstop>lineEdit_8</tabstop>
-  <tabstop>checkBox</tabstop>
+  <tabstop>txtCep</tabstop>
+  <tabstop>txtBairro</tabstop>
+  <tabstop>chboxFrete</tabstop>
   <tabstop>btnSalvar</tabstop>
   <tabstop>btnCancelar</tabstop>
  </tabstops>

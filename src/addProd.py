@@ -108,13 +108,13 @@ class addProd(QWidget, Ui_AddProd):
             return
 
         # GRAVA OS DADOS DO PRODUTO NO BANCO
-        insert = prod.gravaDb(name=nome, prodName=nomeComercial,
-                              marca=marca, sku=codSku, codBarras=codBarras,
-                              fornecedor=fornecedor, fabricante=fabricante,
-                              codncm=codNcm, codcest=codCest)
+        insert = prod.gravaProduto(name=nome, prodName=nomeComercial,
+                                   marca=marca, sku=codSku, codBarras=codBarras,
+                                   fornecedor=fornecedor, fabricante=fabricante,
+                                   codncm=codNcm, codcest=codCest)
 
         # SE HOUVER ERRO NA GRAVAÇÃO DO DATABASE
-        if insert is None:
+        if insert[0] is None:
             text = (f'Não foi possível gravar os dados do produto {nome}.\n'
                     f'Nenhuma alteração foi feita no banco de dados ou '
                     f'cadastro do produto.\n'
@@ -156,5 +156,5 @@ if __name__ == '__main__':
     app.setStyle("Fusion")
     window = addProd()
     window.show()
-    # window.atualizaComboBox()
+    window.atualizaComboBox()
     app.exec()
