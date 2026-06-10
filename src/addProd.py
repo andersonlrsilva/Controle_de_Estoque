@@ -4,6 +4,7 @@ from libAction import prod
 from PySide6.QtGui import QDoubleValidator
 from classes import message
 import addFabric
+import addFornecedor
 
 
 class addProd(QWidget, Ui_AddProd):
@@ -38,6 +39,7 @@ class addProd(QWidget, Ui_AddProd):
         self.btnLimpaForm.clicked.connect(self.limpaForm)
         self.btnSair.clicked.connect(self.sair)
         self.btnAddFabric.clicked.connect(self.addFabric)
+        self.btnAddFornec.clicked.connect(self.addFornec)
 
 # FUNÇOES DO SISTEMA
 
@@ -46,20 +48,58 @@ class addProd(QWidget, Ui_AddProd):
         self.w = addFabric.UiFabricante()
         self.w.show()
 
-# ATUALIZA FABRICANTE / MARCA / FORNECEDOR
+    # ABRE A PAGINA PARA ADICIONAR FORNCEDOR
+    def addFornec(self):
+        self.w = addFornecedor.Fornecedor()
+        self.w.show()
 
+    # ATUALIZA FABRICANTE / MARCA / FORNECEDOR
     def atualizaComboBox(self):
         fabric = prod.updateComboBox('FABRICANTE')
+        if fabric is None:
+            return
         for dado in fabric:  # type: ignore
             self.cmbFabric.addItems(dado)  # type: ignore
 
         fornc = prod.updateComboBox('FORNECEDOR')
+        if fornc is None:
+            return
         for dado in fornc:  # type: ignore
             self.cmbFornec.addItems(dado)  # type: ignore
 
         marca = prod.updateComboBox('MARCA')
+        if marca is None:
+            return
         for dado in marca:  # type: ignore
             self.cmbMarca.addItems(dado)  # type: ignore
+
+# CARREGA FOTO DO ALUNO
+    def loadImage(self):
+        try:
+            file_path, _ = QFileDialog.getOpenFileName(
+                self,
+                "Selecione uma imagem",
+                "",
+                "Image Files (*.png *.jpg *.bmp, *webp)"
+            )
+
+            if file_path:
+                pixmap = QPixmap(file_path)
+                if pixmap.isNull():
+                    print("Erro ao carregar a imagem.")
+                    return
+            with open(file_path, 'rb') as file:
+                self.image_data = file.read()
+                self.image_label.setPixmap(pixmap.scaled(  # type: ignore
+                    self.image_label.width(), self.image_label.height(),
+                    QtCore.Qt.AspectRatioMode.KeepAspectRatio
+                ))
+        except Exception as e:
+            text = f'Erro ao carregar a imagem Erro {e}.'
+            title = "Erro"
+            cadActions.menssage(text, title)
+
+    # CONFIRMA DADOS E INCLUI NO SISTEMA
 
     def incluirProd(self):
         # VALIDA NOME DO PRODUTO
@@ -114,7 +154,7 @@ class addProd(QWidget, Ui_AddProd):
                                    codncm=codNcm, codcest=codCest)
 
         # SE HOUVER ERRO NA GRAVAÇÃO DO DATABASE
-        if insert[0] is None:
+        if insert[0] is None:  # type:ignore
             text = (f'Não foi possível gravar os dados do produto {nome}.\n'
                     f'Nenhuma alteração foi feita no banco de dados ou '
                     f'cadastro do produto.\n'
@@ -125,16 +165,16 @@ class addProd(QWidget, Ui_AddProd):
             return
 
         # MENSAGEM PARA USUÁRIO SE GRAVAÇÃO FOR BEM SUCEDIDA
-        if insert[0] is True:
-            text = f'Produto {insert[1]} inserido com sucesso'
+        if insert[0] is True:  # type:ignore
+            text = f'Produto {insert[1]} inserido com sucesso'  # type:ignore
             message.msgGeneric(title='Cadastro com Sucesso', text=text)
             self.limpaForm()
 
         # MENSAGEM PARA USUÁRIO CASO GRAVAÇÃO RESULTAR EM ERRO
-            if insert[0] is False:
-                print(insert[0], insert[1])
+            if insert[0] is False:  # type:ignore
+                print(insert[0], insert[1])  # type:ignore
 
-# LIMPA O FORMULARIO APÓS GRAVAR OS DADOS NO BANCO DE DADOS
+    # LIMPA O FORMULARIO APÓS GRAVAR OS DADOS NO BANCO DE DADOS
     def limpaForm(self):
         self.txtNomeProd.clear()
         self.txtNomeComercial.clear()
@@ -146,11 +186,12 @@ class addProd(QWidget, Ui_AddProd):
         self.cmbMarca.setCurrentIndex(-1)
         self.cmbFabric.setCurrentIndex(-1)
 
+    # SAIR DO SISTEMA
     def sair(self):
         self.close()
 
 
-# INICIA APP
+    # INICIA APP
 if __name__ == '__main__':
     app = QApplication()
     app.setStyle("Fusion")

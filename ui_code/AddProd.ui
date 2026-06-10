@@ -388,7 +388,7 @@
          <string>Add</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="addFornecedor">
+       <widget class="QPushButton" name="btnAddFornec">
         <property name="geometry">
          <rect>
           <x>540</x>

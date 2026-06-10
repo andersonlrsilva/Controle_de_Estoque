@@ -1,14 +1,14 @@
 from PySide6.QtWidgets import QWidget, QApplication
-from ui.addFabric import Ui_AddFabricante
-from libAction import libAddFabric
+from ui.addFornecedor import Ui_Fornecedor
+from libAction import libAddFornec
 from classes.message import msgGeneric
 
 
-class UiFabricante(QWidget, Ui_AddFabricante):
+class Fornecedor(QWidget, Ui_Fornecedor):
     def __init__(self, parent=None):
-        super(UiFabricante, self).__init__(parent)
+        super(Fornecedor, self).__init__(parent)
         self.setupUi(self)
-        self.setWindowTitle("Adicionar fabricante")
+        self.setWindowTitle("Adicionar fornecedor")
 
 
 # BOTÕES DO SISTEMA
@@ -16,11 +16,12 @@ class UiFabricante(QWidget, Ui_AddFabricante):
         self.btnCancelar.clicked.connect(self.sair)
 
 # AJUSTES DO SISTEMA
-        self.cmbEstado.setCurrentIndex(-1)
 
-# FUNÇÕES DO SISTEMA
+
+# FUNÇÕES DO SISTEMA+
+
     def limpaform(self):
-        self.txtFabricante.clear()
+        self.txtFornecedor.clear()
         self.txtCnpj.clear()
         self.txtEmail.clear()
         self.txtTelCtt.clear()
@@ -32,60 +33,63 @@ class UiFabricante(QWidget, Ui_AddFabricante):
         self.txtCep.clear()
         self.txtBairro.clear()
 
+    def sair(self):  # type: ignore
+        self.close()
+
     def salvar(self):
-        nomeFabric = libAddFabric.nomeFabric(self.txtFabricante.text())
-        if nomeFabric is None:
+        nomeFornec = libAddFornec.nomeFornec(self.txtFornecedor.text())
+        if nomeFornec is None:
             return
 
-        cnpjFabric = libAddFabric.cnpjFabric(self.txtCnpj.text())
-        if cnpjFabric is None:
+        cnpjFornec = libAddFornec.cnpjFornec(self.txtCnpj.text())
+        if cnpjFornec is None:
             return
 
-        emailFabric = libAddFabric.emailFabric(self.txtEmail.text())
-        if emailFabric is None:
+        emailFornec = libAddFornec.emailFornec(self.txtEmail.text())
+        if emailFornec is None:
             return
 
-        telefone = libAddFabric.telefoneFabric(self.txtTelCtt.text())
+        telefone = libAddFornec.telefoneFornec(self.txtTelCtt.text())
         if telefone is None:
             return
 
-        site = libAddFabric.siteFabric(self.txtSite.text())
+        site = libAddFornec.siteFornec(self.txtSite.text())
         if site is None:
             return
 
-        rua = libAddFabric.ruaFabric(self.txtRua.text())
+        rua = libAddFornec.ruaFornec(self.txtRua.text())
         if rua is None:
             return
 
-        numero = libAddFabric.numeroFabric(self.txtNumero.text())
+        numero = libAddFornec.numeroFornec(self.txtNumero.text())
         if numero is None:
             return
 
-        estado = libAddFabric.estadoFabric(self.cmbEstado.currentText())
+        estado = libAddFornec.estadoFornec(self.cmbEstado.currentText())
         if estado is None:
             return
 
-        cep = libAddFabric.cepFabric(self.txtCep.text())
+        cep = libAddFornec.cepFornec(self.txtCep.text())
         if cep is None:
             return
 
-        bairro = libAddFabric.bairroFabric(self.txtBairro.text())
+        bairro = libAddFornec.bairroFornec(self.txtBairro.text())
         if bairro is None:
             return
 
         frete = self.chboxFrete.isChecked()
         telefone2 = self.txtTelCtt_2.text()
 
-        insert = libAddFabric.gravaFabricante(
-            nome=nomeFabric, cnpj=cnpjFabric,
-            email=emailFabric, telefone=telefone,
+        insert = libAddFornec.gravaFornecedor(
+            nome=nomeFornec, cnpj=cnpjFornec,
+            email=emailFornec, telefone=telefone,
             telefone2=telefone2, site=site,
             rua=rua, numero=numero, estado=estado, cep=cep, bairro=bairro,
             frete=frete)
 
         if insert[0] is None:  # type:ignore
             text = (f'Não foi possível gravar os dados do fabricante'
-                    f'{nomeFabric}.\n'
+                    f'{nomeFornec}.\n'
                     f'Nenhuma alteração foi feita no banco de dados ou '
                     f'cadastro do fabricante.\n'
                     f'Caso o problema persista, entre em contato com'
@@ -95,17 +99,14 @@ class UiFabricante(QWidget, Ui_AddFabricante):
             return
 
         if insert[0] is True:  # type:ignore
-            text = f'Fabricante {insert[1]} inserido com sucesso'
+            text = f'Fornecedor {insert[1]} inserido com sucesso'
             msgGeneric(title='Cadastro com Sucesso', text=text)
-            # self.limpaForm()
-
-    def sair(self):  # type: ignore
-        self.close()
+            self.limpaform()
 
 
 if __name__ == '__main__':
     app = QApplication()
-    window = UiFabricante()
+    window = Fornecedor()
     window.show()
     app.setStyle('Fusion')
     app.exec()
