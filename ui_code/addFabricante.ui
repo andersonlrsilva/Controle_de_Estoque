@@ -170,7 +170,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Possui Frete Proprio</string>
+     <string>Possui Frete Próprio</string>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -468,6 +468,19 @@
       <widget class="QLineEdit" name="txtTelCtt_2"/>
      </item>
     </layout>
+   </widget>
+   <widget class="QCheckBox" name="chboxselfFrabric">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>480</y>
+      <width>201</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fabricante é o fornecedor do Produto</string>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -262,6 +262,9 @@ class Ui_AddFabricante(object):
 
         self.telefoneContato_2.addWidget(self.txtTelCtt_2)
 
+        self.chboxselfFrabric = QCheckBox(self.groupBox)
+        self.chboxselfFrabric.setObjectName(u"chboxselfFrabric")
+        self.chboxselfFrabric.setGeometry(QRect(10, 480, 201, 17))
         QWidget.setTabOrder(self.txtFabricante, self.txtCnpj)
         QWidget.setTabOrder(self.txtCnpj, self.txtEmail)
         QWidget.setTabOrder(self.txtEmail, self.txtTelCtt)
@@ -290,7 +293,7 @@ class Ui_AddFabricante(object):
         self.labelTelCtt.setText(QCoreApplication.translate("AddFabricante", u"Telefone", None))
         self.labelSite.setText(QCoreApplication.translate("AddFabricante", u"Site", None))
         self.labelRua.setText(QCoreApplication.translate("AddFabricante", u"Rua", None))
-        self.chboxFrete.setText(QCoreApplication.translate("AddFabricante", u"Possui Frete Proprio", None))
+        self.chboxFrete.setText(QCoreApplication.translate("AddFabricante", u"Possui Frete Pr\u00f3prio", None))
         self.btnSalvar.setText(QCoreApplication.translate("AddFabricante", u"Salvar", None))
         self.btnCancelar.setText(QCoreApplication.translate("AddFabricante", u"Cancelar", None))
         self.labelEnderco.setText(QCoreApplication.translate("AddFabricante", u"Endere\u00e7o", None))
@@ -328,5 +331,6 @@ class Ui_AddFabricante(object):
         self.label_8.setText(QCoreApplication.translate("AddFabricante", u"Bairro", None))
         self.label_10.setText(QCoreApplication.translate("AddFabricante", u"Numero", None))
         self.labelTelCtt_2.setText(QCoreApplication.translate("AddFabricante", u"Celular / Whatsapp", None))
+        self.chboxselfFrabric.setText(QCoreApplication.translate("AddFabricante", u"Fabricante \u00e9 o fornecedor do Produto", None))
     # retranslateUi
 

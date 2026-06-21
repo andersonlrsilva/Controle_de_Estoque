@@ -1,4 +1,6 @@
+from PySide6.QtGui import QCloseEvent
 from PySide6.QtWidgets import QWidget, QApplication
+from libAction import prod
 from ui.addFabric import Ui_AddFabricante
 from libAction import libAddFabric
 from classes.message import msgGeneric
@@ -75,13 +77,14 @@ class UiFabricante(QWidget, Ui_AddFabricante):
 
         frete = self.chboxFrete.isChecked()
         telefone2 = self.txtTelCtt_2.text()
+        selfFornec = self.chboxselfFrabric.isChecked()
 
         insert = libAddFabric.gravaFabricante(
             nome=nomeFabric, cnpj=cnpjFabric,
             email=emailFabric, telefone=telefone,
             telefone2=telefone2, site=site,
             rua=rua, numero=numero, estado=estado, cep=cep, bairro=bairro,
-            frete=frete)
+            frete=frete, fornec=selfFornec)
 
         if insert[0] is None:  # type:ignore
             text = (f'Não foi possível gravar os dados do fabricante'

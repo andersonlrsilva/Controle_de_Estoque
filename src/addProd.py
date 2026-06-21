@@ -24,11 +24,11 @@ class addProd(QWidget, Ui_AddProd):
         self.txtCodBarras.setValidator(
             QDoubleValidator(bottom=0, top=9999999999))
 
-        # CMBMARCA
-        self.cmbMarca.setCurrentIndex(-1)
-
         # CMBFABRIC
         self.cmbFabric.setCurrentIndex(-1)
+
+        # CMBMARCA
+        self.cmbMarca.setCurrentIndex(-1)
 
         # CMBFORNEC
         self.cmbFornec.setCurrentIndex(-1)
@@ -41,14 +41,18 @@ class addProd(QWidget, Ui_AddProd):
         self.btnAddFabric.clicked.connect(self.addFabric)
         self.btnAddFornec.clicked.connect(self.addFornec)
 
+
 # FUNÇOES DO SISTEMA
 
     # ABRE PAGINA PARA ADICIONAR FABRICANTE
+
+
     def addFabric(self):
         self.w = addFabric.UiFabricante()
         self.w.show()
 
     # ABRE A PAGINA PARA ADICIONAR FORNCEDOR
+
     def addFornec(self):
         self.w = addFornecedor.Fornecedor()
         self.w.show()
@@ -61,17 +65,23 @@ class addProd(QWidget, Ui_AddProd):
         for dado in fabric:  # type: ignore
             self.cmbFabric.addItems(dado)  # type: ignore
 
+        self.cmbFabric.setCurrentIndex(-1)
+
         fornc = prod.updateComboBox('FORNECEDOR')
         if fornc is None:
             return
         for dado in fornc:  # type: ignore
             self.cmbFornec.addItems(dado)  # type: ignore
 
+        self.cmbFornec.setCurrentIndex(-1)
+
         marca = prod.updateComboBox('MARCA')
         if marca is None:
             return
         for dado in marca:  # type: ignore
             self.cmbMarca.addItems(dado)  # type: ignore
+
+        self.cmbMarca.setCurrentIndex(-1)
 
 # CARREGA FOTO DO ALUNO
     def loadImage(self):
@@ -187,6 +197,7 @@ class addProd(QWidget, Ui_AddProd):
         self.cmbFabric.setCurrentIndex(-1)
 
     # SAIR DO SISTEMA
+
     def sair(self):
         self.close()
 

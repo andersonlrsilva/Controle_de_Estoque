@@ -5,7 +5,7 @@ from mysql.connector import Error
 # CLASSE DATABASE
 class Database():
     def __init__(self,
-                 host='192.168.1.100',
+                 host='127.0.0.1',
                  port='3306',
                  database='DBSISTEMA',
                  user='DBUSER',

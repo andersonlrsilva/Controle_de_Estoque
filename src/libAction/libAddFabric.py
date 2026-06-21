@@ -1,6 +1,7 @@
 from classes.message import msgGeneric
 from classes.database import Database
 
+
 # FUNÇÃO PRA VALIDAR NOME DO FABRICANTE
 
 
@@ -106,12 +107,13 @@ def bairroFabric(bairro):
 
 def gravaFabricante(**kwargs):
     query = ("INSERT INTO FABRICANTE ( FABRICANTE, CNPJ, EMAIL, TELEFONE,"
-             "TELEFONE2, WEBSITE, RUA, NUMERO, ESTADO, CEP, BAIRRO, FRETE)"
-             "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
+             "TELEFONE2, WEBSITE, RUA, NUMERO, ESTADO, CEP, BAIRRO, FRETE,"
+             "FORNECEDOR)"
+             "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
     dados = (kwargs['nome'], kwargs['cnpj'], kwargs['email'],
              kwargs['telefone'], kwargs['telefone2'], kwargs['site'],
              kwargs['rua'], kwargs['numero'], kwargs['estado'], kwargs['cep'],
-             kwargs['bairro'], kwargs['frete'])
+             kwargs['bairro'], kwargs['frete'], kwargs['fornec'])
     db = Database()
     con = db.connect()
     if con is False:
