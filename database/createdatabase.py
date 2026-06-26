@@ -42,7 +42,7 @@ def createTableUser():
                    """)
     cursor.execute("""
                    INSERT INTO  USER (USER, PASSWORD, USERACCESS)
-                   VALUES('TESTE', 'TESTE', 'TESTE')
+                   VALUES('TESTE', 'TESTE', 'ADMIN')
                    """)
     con.commit()
     con.close()
@@ -59,4 +59,5 @@ def criaDatabase():
 
 
 if __name__ == '__main__':
-    startDB = criaDatabase()
+    # startDB = criaDatabase()
+    createTableUser()

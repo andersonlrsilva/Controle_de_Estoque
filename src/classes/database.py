@@ -20,6 +20,7 @@ class Database():
 
 # INICIA CONEXÃO COM BANCO DE DADOS
 
+
     def connect(self):
         try:
             self.connection = mysql.connector.connect(
@@ -60,8 +61,8 @@ class Database():
                 return False, 'L002'
 
     def executaquery(self, query, dados):
-        db = Database()
-        con = db.connect()
+        # db = Database()
+        con = self.connect()
         if con is False:
             return
         else:
@@ -70,6 +71,19 @@ class Database():
             dados = cursor.fetchall()
             con.close()
             return dados
+
+    def inserirMarca(self, **kwargs):
+        try:
+            con = self.connect()
+            cursor = con.cursor()  # type:ignore
+            dados = (kwargs['marca'], kwargs['site'])
+            query = ("""INSERT INTO MARCA(MARCA, SITE)VALUES(%s, %s)""")
+            cursor.execute(query, dados)
+            con.commit()  # type:ignore
+            con.close()  # type:ignore
+            return True
+        except:
+            return False
 
 
 if __name__ == '__main__':

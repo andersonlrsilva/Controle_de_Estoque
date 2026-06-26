@@ -119,14 +119,7 @@ def updateComboBox(args):
 
 
 def gravaProduto(**kwargs):
-    # GRAVA OS DADOS DA TABELA PRODUTO
-    queryProd = ("INSERT INTO PRODUTOS (NOMEPRODUTO, NOMECOMERCIAL,"
-                 "MARCA, CODSKU, CODBARRAS, FORNECEDOR, FABRICANTE,"
-                 "CODNCM, CODCEST)"
-                 "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)")
-    dadosProd = (kwargs['name'], kwargs['prodName'], kwargs['marca'],
-                 kwargs['sku'], kwargs['codBarras'], kwargs['fornecedor'],
-                 kwargs['fabricante'], kwargs['codncm'], kwargs['codcest'])
+
     # INICIA A INSTANCIA DO DATABASE E A CONEXÃO
     db = Database()
     con = db.connect()
@@ -134,8 +127,25 @@ def gravaProduto(**kwargs):
         return
     cursor = con.cursor()
     con.start_transaction()
+
+    # DADOS DA TABELA PRODUTO
+    queryProd = ("INSERT INTO PRODUTOS (NOMEPRODUTO, NOMECOMERCIAL,"
+                 "MARCA, CODSKU, CODBARRAS, FORNECEDOR, FABRICANTE,"
+                 "CODNCM, CODCEST)"
+                 "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)")
+    dadosProd = (kwargs['name'], kwargs['prodName'], kwargs['marca'],
+                 kwargs['sku'], kwargs['codBarras'], kwargs['fornecedor'],
+                 kwargs['fabricante'], kwargs['codncm'], kwargs['codcest'])
+
     cursor.execute(queryProd, dadosProd)
     id_produto = cursor.lastrowid
+
+    # DADOS DA TABELA FOTOS DO PRODUTO
+    queryImage = ("INSERT INTO IMGPRODUTO(FOTO, ID_PRODUTO)"
+                  "VALUES(%s, %s)")
+    dadosImage = (kwargs['image'], id_produto)
+    cursor.execute(queryImage, dadosImage)
+
     con.commit()
     con.close()
     return True, kwargs['name']

@@ -1,10 +1,17 @@
-from PySide6.QtWidgets import QApplication, QWidget
+from winreg import DeleteValue
+
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QLabel
+from shiboken6 import delete
+from ui import addmarca
 from ui.addProd import Ui_AddProd
 from libAction import prod
-from PySide6.QtGui import QDoubleValidator
+from PySide6.QtGui import QDoubleValidator, QPixmap
 from classes import message
 import addFabric
 import addFornecedor
+import addMarca
+from PySide6.QtCore import Qt
+import sys
 
 
 class addProd(QWidget, Ui_AddProd):
@@ -40,21 +47,22 @@ class addProd(QWidget, Ui_AddProd):
         self.btnSair.clicked.connect(self.sair)
         self.btnAddFabric.clicked.connect(self.addFabric)
         self.btnAddFornec.clicked.connect(self.addFornec)
-
+        self.btnAddMarca.clicked.connect(self.addMarca)
+        self.btnSalvaFoto.clicked.connect(self.loadImage)
 
 # FUNÇOES DO SISTEMA
-
     # ABRE PAGINA PARA ADICIONAR FABRICANTE
-
-
     def addFabric(self):
         self.w = addFabric.UiFabricante()
         self.w.show()
 
     # ABRE A PAGINA PARA ADICIONAR FORNCEDOR
-
     def addFornec(self):
         self.w = addFornecedor.Fornecedor()
+        self.w.show()
+
+    def addMarca(self):
+        self.w = addMarca.Addmarca()
         self.w.show()
 
     # ATUALIZA FABRICANTE / MARCA / FORNECEDOR
@@ -83,7 +91,7 @@ class addProd(QWidget, Ui_AddProd):
 
         self.cmbMarca.setCurrentIndex(-1)
 
-# CARREGA FOTO DO ALUNO
+# CARREGA FOTO DO  PRODUTO
     def loadImage(self):
         try:
             file_path, _ = QFileDialog.getOpenFileName(
@@ -100,14 +108,13 @@ class addProd(QWidget, Ui_AddProd):
                     return
             with open(file_path, 'rb') as file:
                 self.image_data = file.read()
-                self.image_label.setPixmap(pixmap.scaled(  # type: ignore
-                    self.image_label.width(), self.image_label.height(),
-                    QtCore.Qt.AspectRatioMode.KeepAspectRatio
+                self.labelFoto.setPixmap(pixmap.scaled(  # type: ignore
+                    self.labelFoto.width(), self.labelFoto.height(),
+                    Qt.AspectRatioMode.KeepAspectRatio
                 ))
         except Exception as e:
             text = f'Erro ao carregar a imagem Erro {e}.'
             title = "Erro"
-            cadActions.menssage(text, title)
 
     # CONFIRMA DADOS E INCLUI NO SISTEMA
 
@@ -161,7 +168,8 @@ class addProd(QWidget, Ui_AddProd):
         insert = prod.gravaProduto(name=nome, prodName=nomeComercial,
                                    marca=marca, sku=codSku, codBarras=codBarras,
                                    fornecedor=fornecedor, fabricante=fabricante,
-                                   codncm=codNcm, codcest=codCest)
+                                   codncm=codNcm, codcest=codCest,
+                                   image=self.image_data)
 
         # SE HOUVER ERRO NA GRAVAÇÃO DO DATABASE
         if insert[0] is None:  # type:ignore
@@ -195,6 +203,7 @@ class addProd(QWidget, Ui_AddProd):
         self.cmbFornec.setCurrentIndex(-1)
         self.cmbMarca.setCurrentIndex(-1)
         self.cmbFabric.setCurrentIndex(-1)
+        self.labelFoto.clear()
 
     # SAIR DO SISTEMA
 

@@ -263,7 +263,7 @@
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-        <widget class="QLabel" name="lableFoto">
+        <widget class="QLabel" name="labelFoto">
          <property name="geometry">
           <rect>
            <x>6</x>
@@ -279,19 +279,6 @@
         <widget class="QPushButton" name="btnSalvaFoto">
          <property name="geometry">
           <rect>
-           <x>90</x>
-           <y>180</y>
-           <width>81</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Remover Foto</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="btnRemFoto">
-         <property name="geometry">
-          <rect>
            <x>10</x>
            <y>180</y>
            <width>81</width>
@@ -299,7 +286,20 @@
           </rect>
          </property>
          <property name="text">
-          <string>Inserir Foto</string>
+          <string>Inserir Imagem</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="btnRemFoto">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>180</y>
+           <width>81</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Rem. imagem</string>
          </property>
         </widget>
        </widget>
