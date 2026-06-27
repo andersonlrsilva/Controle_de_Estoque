@@ -65,5 +65,6 @@ def test_grava_produto_banco_de_dados():
     dados = prod.gravaProduto(name='nome', prodName='nomeComercial',
                               marca='marca', sku='codSku', codBarras='codBarras',
                               fornecedor='fornecedor', fabricante='fabricante',
-                              codncm='codNcm', codcest='codCest')
+                              codncm='codNcm', codcest='codCest', image='1231',
+                              desc='123')
     assert dados[0] == True

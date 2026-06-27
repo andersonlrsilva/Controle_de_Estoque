@@ -16,7 +16,8 @@ class Fornecedor(QWidget, Ui_Fornecedor):
         self.btnCancelar.clicked.connect(self.sair)
 
 # AJUSTES DO SISTEMA
-
+        self.cmbEstado.setCurrentIndex(-1)
+        self.cmbEstado.setMaxVisibleItems(5)
 
 # FUNÇÕES DO SISTEMA+
 
@@ -98,7 +99,7 @@ class Fornecedor(QWidget, Ui_Fornecedor):
             msgGeneric(text=text, title=title)
             return
 
-        if insert[0] is True:  # type:ignore
+        if insert[0] is True:
             text = f'Fornecedor {insert[1]} inserido com sucesso'
             msgGeneric(title='Cadastro com Sucesso', text=text)
             self.limpaform()
@@ -109,4 +110,5 @@ if __name__ == '__main__':
     window = Fornecedor()
     window.show()
     app.setStyle('Fusion')
+
     app.exec()

@@ -1,17 +1,9 @@
-from winreg import DeleteValue
-
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QLabel
-from shiboken6 import delete
-from ui import addmarca
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
 from ui.addProd import Ui_AddProd
 from libAction import prod
 from PySide6.QtGui import QDoubleValidator, QPixmap
-from classes import message
-import addFabric
-import addFornecedor
-import addMarca
+from classes.message import msgGeneric
 from PySide6.QtCore import Qt
-import sys
 
 
 class addProd(QWidget, Ui_AddProd):
@@ -19,6 +11,7 @@ class addProd(QWidget, Ui_AddProd):
         super(addProd, self).__init__()
         self.setupUi(self)
         self.setWindowTitle('Cadastro de Produtos')
+        self.image_data = ''
 
 
 # AJUSTES
@@ -31,14 +24,14 @@ class addProd(QWidget, Ui_AddProd):
         self.txtCodBarras.setValidator(
             QDoubleValidator(bottom=0, top=9999999999))
 
-        # CMBFABRIC
-        self.cmbFabric.setCurrentIndex(-1)
+        # CODIGO CEST
+        self.txtCest.setMaxLength(7)
 
-        # CMBMARCA
-        self.cmbMarca.setCurrentIndex(-1)
+        # CODIGO NCM
+        self.txtNcm.setMaxLength(10)
 
-        # CMBFORNEC
-        self.cmbFornec.setCurrentIndex(-1)
+        # NOME PRODUTO
+        self.txtNomeProd
 
 
 # BOTÕES DO SISTEMA
@@ -53,15 +46,19 @@ class addProd(QWidget, Ui_AddProd):
 # FUNÇOES DO SISTEMA
     # ABRE PAGINA PARA ADICIONAR FABRICANTE
     def addFabric(self):
+        import addFabric
         self.w = addFabric.UiFabricante()
         self.w.show()
 
     # ABRE A PAGINA PARA ADICIONAR FORNCEDOR
     def addFornec(self):
+        import addFornecedor
         self.w = addFornecedor.Fornecedor()
         self.w.show()
 
+    # ABRE A PAGINA PARA ADICIONAR MARCA
     def addMarca(self):
+        import addMarca
         self.w = addMarca.Addmarca()
         self.w.show()
 
@@ -91,7 +88,7 @@ class addProd(QWidget, Ui_AddProd):
 
         self.cmbMarca.setCurrentIndex(-1)
 
-# CARREGA FOTO DO  PRODUTO
+    # CARREGA FOTO DO  PRODUTO
     def loadImage(self):
         try:
             file_path, _ = QFileDialog.getOpenFileName(
@@ -117,7 +114,6 @@ class addProd(QWidget, Ui_AddProd):
             title = "Erro"
 
     # CONFIRMA DADOS E INCLUI NO SISTEMA
-
     def incluirProd(self):
         # VALIDA NOME DO PRODUTO
         nome = prod.prodName(self.txtNomeProd.text())
@@ -164,12 +160,23 @@ class addProd(QWidget, Ui_AddProd):
         if codNcm is None:
             return
 
+        # DESCRIÇÃO DO PRODUTO
+        descr = self.txtAplicacao.toPlainText()
+        print(descr)
+
+        if not self.image_data:
+            title = 'Erro no cadastro'
+            text = 'Imagem do produto não pode estar vazia'
+            msgGeneric(title=title, text=text)
+            print('caiu na imagen')
+            return
+
         # GRAVA OS DADOS DO PRODUTO NO BANCO
         insert = prod.gravaProduto(name=nome, prodName=nomeComercial,
                                    marca=marca, sku=codSku, codBarras=codBarras,
                                    fornecedor=fornecedor, fabricante=fabricante,
                                    codncm=codNcm, codcest=codCest,
-                                   image=self.image_data)
+                                   image=self.image_data, desc=descr)
 
         # SE HOUVER ERRO NA GRAVAÇÃO DO DATABASE
         if insert[0] is None:  # type:ignore
@@ -179,13 +186,13 @@ class addProd(QWidget, Ui_AddProd):
                     f'Caso o problema persista, entre em contato com'
                     f'o suporte técnico')
             title = 'Erro ao salvar alterações'
-            message.msgGeneric(text=text, title=title)
+            msgGeneric(text=text, title=title)
             return
 
         # MENSAGEM PARA USUÁRIO SE GRAVAÇÃO FOR BEM SUCEDIDA
         if insert[0] is True:  # type:ignore
             text = f'Produto {insert[1]} inserido com sucesso'  # type:ignore
-            message.msgGeneric(title='Cadastro com Sucesso', text=text)
+            msgGeneric(title='Cadastro com Sucesso', text=text)
             self.limpaForm()
 
         # MENSAGEM PARA USUÁRIO CASO GRAVAÇÃO RESULTAR EM ERRO
@@ -204,12 +211,11 @@ class addProd(QWidget, Ui_AddProd):
         self.cmbMarca.setCurrentIndex(-1)
         self.cmbFabric.setCurrentIndex(-1)
         self.labelFoto.clear()
+        self.txtAplicacao.clear()
 
     # SAIR DO SISTEMA
-
     def sair(self):
         self.close()
-
 
     # INICIA APP
 if __name__ == '__main__':

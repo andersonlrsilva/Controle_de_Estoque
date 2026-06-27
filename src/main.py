@@ -28,12 +28,41 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # MENU
 # MENU SISTEMA
         self.action_exitSystem.triggered.connect(self.exitsystem)
+# MENU CADASTROS
+        # Cadasto de Fornecedores
+        self.actionFronecedores.triggered.connect(self.cadFornecedor)
+        # Cadastro de Fabricantes
+        self.actionFabricantes.triggered.connect(self.cadFabricante)
+# MENU ESQTOQUE
+        # Cadastro de produtos
+        self.action_CadProdutos.triggered.connect(self.cadprod)
 # MENU ATUALIZAÇÃO >
         # Busca Atualização
         self.actionBuscarAtualizacao.triggered.connect(self.buscaAtualizacao)
 
 # FUNÇÕES DO SISTEMA
-    # sair do sistema
+
+    # CADASTRO DE FORNECEDORES
+    def cadFabricante(self):
+        import addFabric
+        self.cadfabr = addFabric.UiFabricante()
+        self.cadfabr.show()
+
+    # CADASTRO DE FORNECEDORES
+    def cadFornecedor(self):
+        import addFornecedor
+        self.cadFor = addFornecedor.Fornecedor()
+        self.cadFor.show()
+
+    # CADASTRO DE PRODUTOS
+
+    def cadprod(self):
+        import addProd
+        self.cad = addProd.addProd()
+        self.cad.show()
+
+    # SAIR DO SISTEMA
+
     def exitsystem(self):
         for widget in QApplication.allWidgets():
             widget.close()

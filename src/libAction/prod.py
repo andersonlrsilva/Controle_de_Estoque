@@ -1,3 +1,5 @@
+from math import prod
+
 from classes import message
 from classes.database import Database
 from ui.addProd import Ui_AddProd
@@ -6,13 +8,22 @@ from ui.addProd import Ui_AddProd
 # CADASTRO DE PRODUTOS
 # FUNÇÃO PARA VALIDAÇÃO DO NOME DO PRODUTO
 
+proibidos = ('@', '#', '$', '¨', '&', '*')
+
 
 def prodName(name):
     text = 'O nome do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
+    # TESTE SE NOME DO PRODUTO ESTA VAZIO
     if not name:
-        # message.msgGeneric(title=title, text=text)
-        return None, message.msgGeneric(title=title, text=text)
+        message.msgGeneric(title=title, text=text)
+        return None
+    # TESTA SE PRODUTO POSSUI CARACTERE NÃO PERMITIDO
+    for c in name:
+        if c in proibidos:
+            text2 = f'O nome do produto não pode conter o caracter {c}'
+            message.msgGeneric(title=title, text=text2)
+            return None
     else:
         return name
 
@@ -24,11 +35,19 @@ def prodComName(prodName):
     if not prodName:
         message.msgGeneric(title=title, text=text)
         return None
+
+    # TESTA SE NOME COMERCIAL PRODUTO POSSUI CARACTERE NÃO PERMITIDO
+    for c in prodName:
+        if c in proibidos:
+            text2 = f'O nome comercial do produto não pode conter o caracter {c}'
+            message.msgGeneric(title=title, text=text2)
+            return None
     else:
         return prodName
 
-
 # FUNÇÃO PARA VALIDAÇÃO DA MARCA DO PRODUTO
+
+
 def prodMarca(marca):
     text = 'A marca do produto não pode estar vazio'
     title = 'Erro no Cadastro do Produto'
@@ -146,6 +165,16 @@ def gravaProduto(**kwargs):
     dadosImage = (kwargs['image'], id_produto)
     cursor.execute(queryImage, dadosImage)
 
+    # DADOS DA TABELA DESCRIÇÃO / APLICAÇÃO
+    queryDescr = ("INSERT INTO DESCRICAO(DESCRICAO,ID_PRODUTO)"
+                  "VALUES(%s,%s)")
+    dadosDescr = (kwargs['desc'], id_produto)
+    cursor.execute(queryDescr, dadosDescr)
+
     con.commit()
     con.close()
     return True, kwargs['name']
+
+
+# ee = prodName('')
+# print(ee)

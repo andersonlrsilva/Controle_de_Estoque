@@ -46,7 +46,6 @@
      <addaction name="actionFazer_Pedido"/>
      <addaction name="actionConsultar_pedidos"/>
     </widget>
-    <addaction name="action_CadProdutos"/>
     <addaction name="actionEntrada"/>
     <addaction name="menuPedidos"/>
     <addaction name="actionCompras"/>
@@ -78,6 +77,9 @@
     <property name="title">
      <string>Clientes</string>
     </property>
+    <addaction name="actionCadastro"/>
+    <addaction name="actionListar"/>
+    <addaction name="actionExcluir"/>
    </widget>
    <widget class="QMenu" name="menuRH">
     <property name="enabled">
@@ -129,7 +131,18 @@
     <addaction name="action_cad_user"/>
     <addaction name="action_exitSystem"/>
    </widget>
+   <widget class="QMenu" name="menuCadastro">
+    <property name="title">
+     <string>Cadastros</string>
+    </property>
+    <addaction name="actionClientes"/>
+    <addaction name="action_CadProdutos"/>
+    <addaction name="actionFronecedores"/>
+    <addaction name="actionFabricantes"/>
+    <addaction name="actionTransportadoras"/>
+   </widget>
    <addaction name="menuSistema"/>
+   <addaction name="menuCadastro"/>
    <addaction name="menuEstoque"/>
    <addaction name="menuClientes"/>
    <addaction name="menuVendas"/>
@@ -241,6 +254,41 @@
   <action name="actionAtualizafuturas">
    <property name="text">
     <string>Atualizações futuras</string>
+   </property>
+  </action>
+  <action name="actionFronecedores">
+   <property name="text">
+    <string>Fronecedores</string>
+   </property>
+  </action>
+  <action name="actionFabricantes">
+   <property name="text">
+    <string>Fabricantes</string>
+   </property>
+  </action>
+  <action name="actionTransportadoras">
+   <property name="text">
+    <string>Transportadoras</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="actionCadastro">
+   <property name="text">
+    <string>Cadastro</string>
+   </property>
+  </action>
+  <action name="actionListar">
+   <property name="text">
+    <string>Listar</string>
+   </property>
+  </action>
+  <action name="actionExcluir">
+   <property name="text">
+    <string>Excluir</string>
    </property>
   </action>
  </widget>
