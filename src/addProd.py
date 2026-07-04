@@ -6,9 +6,9 @@ from classes.message import msgGeneric
 from PySide6.QtCore import Qt
 
 
-class addProd(QWidget, Ui_AddProd):
+class UiaddProd(QWidget, Ui_AddProd):
     def __init__(self):
-        super(addProd, self).__init__()
+        super(UiaddProd, self).__init__()
         self.setupUi(self)
         self.setWindowTitle('Cadastro de Produtos')
         self.image_data = ''
@@ -53,7 +53,7 @@ class addProd(QWidget, Ui_AddProd):
     # ABRE A PAGINA PARA ADICIONAR FORNCEDOR
     def addFornec(self):
         import addFornecedor
-        self.w = addFornecedor.Fornecedor()
+        self.w = addFornecedor.UiFornecedor()
         self.w.show()
 
     # ABRE A PAGINA PARA ADICIONAR MARCA
@@ -217,11 +217,12 @@ class addProd(QWidget, Ui_AddProd):
     def sair(self):
         self.close()
 
+
     # INICIA APP
 if __name__ == '__main__':
     app = QApplication()
     app.setStyle("Fusion")
-    window = addProd()
+    window = UiaddProd()
     window.show()
     window.atualizaComboBox()
     app.exec()

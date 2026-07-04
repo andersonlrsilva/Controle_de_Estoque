@@ -97,5 +97,6 @@ class Login(QWidget, Ui_login):
 if __name__ == "__main__":
     app = QApplication()
     window = Login()
+    app.setStyle("fusion")
     window.show()
     app.exec()

@@ -20,7 +20,6 @@ class Database():
 
 # INICIA CONEXÃO COM BANCO DE DADOS
 
-
     def connect(self):
         try:
             self.connection = mysql.connector.connect(
@@ -85,7 +84,21 @@ class Database():
         except:
             return False
 
+    def inserirAtividade(self, atividade, teste):
+        try:
+            con = self.connect()
+            cursor = con.cursor()  # type:ignore
+            dados = atividade
+            print(atividade)
+            query = ("""INSERT INTO ATIVIDADE(RAMO)VALUES(%s)""")
+            cursor.execute(query, dados)
+            con.commit()  # type:ignore
+            con.close()  # type:ignore
+            return True
+        except:
+            return False
+
 
 if __name__ == '__main__':
     db = Database()
-    db.login('itallo', 'ggg')
+    db.inserirAtividade('swd', 'mghfkmg')

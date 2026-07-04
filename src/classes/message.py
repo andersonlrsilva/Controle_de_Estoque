@@ -80,7 +80,7 @@ def msgUpdWarning():
     msg.exec()
 
 
-# MENSAGEM DE TEXTO GENERICA
+# MENSAGEM ERRO GENERICA
 def msgGeneric(title, text):
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Icon.Warning)

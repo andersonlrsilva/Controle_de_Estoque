@@ -4,9 +4,9 @@ from libAction import libAddFornec
 from classes.message import msgGeneric
 
 
-class Fornecedor(QWidget, Ui_Fornecedor):
+class UiFornecedor(QWidget, Ui_Fornecedor):
     def __init__(self, parent=None):
-        super(Fornecedor, self).__init__(parent)
+        super(UiFornecedor, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("Adicionar fornecedor")
 
@@ -107,7 +107,7 @@ class Fornecedor(QWidget, Ui_Fornecedor):
 
 if __name__ == '__main__':
     app = QApplication()
-    window = Fornecedor()
+    window = UiFornecedor()
     window.show()
     app.setStyle('Fusion')
 

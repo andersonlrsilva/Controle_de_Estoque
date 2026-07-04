@@ -128,18 +128,19 @@
     <property name="title">
      <string>Sistema</string>
     </property>
-    <addaction name="action_cad_user"/>
-    <addaction name="action_exitSystem"/>
+    <addaction name="actionCadUser"/>
+    <addaction name="actionExitSystem"/>
    </widget>
    <widget class="QMenu" name="menuCadastro">
     <property name="title">
      <string>Cadastros</string>
     </property>
     <addaction name="actionClientes"/>
-    <addaction name="action_CadProdutos"/>
+    <addaction name="actionCadProdutos"/>
     <addaction name="actionFronecedores"/>
     <addaction name="actionFabricantes"/>
     <addaction name="actionTransportadoras"/>
+    <addaction name="actionAtividade"/>
    </widget>
    <addaction name="menuSistema"/>
    <addaction name="menuCadastro"/>
@@ -169,7 +170,7 @@
     <string>Entrada de produtos</string>
    </property>
   </action>
-  <action name="action_CadProdutos">
+  <action name="actionCadProdutos">
    <property name="text">
     <string>Cadastro de Produtos</string>
    </property>
@@ -216,12 +217,12 @@
     <string>Consultar pedidos</string>
    </property>
   </action>
-  <action name="action_cad_user">
+  <action name="actionCadUser">
    <property name="text">
     <string>Cadastrar Usuário</string>
    </property>
   </action>
-  <action name="action_exitSystem">
+  <action name="actionExitSystem">
    <property name="text">
     <string>Sair do sistema</string>
    </property>
@@ -289,6 +290,11 @@
   <action name="actionExcluir">
    <property name="text">
     <string>Excluir</string>
+   </property>
+  </action>
+  <action name="actionAtividade">
+   <property name="text">
+    <string>Ramo de Atividade</string>
    </property>
   </action>
  </widget>
