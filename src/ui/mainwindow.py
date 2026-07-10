@@ -157,7 +157,6 @@ class Ui_MainWindow(object):
         self.menuconfiguracao.addAction(self.actionEstoque)
         self.menuconfiguracao.addAction(self.menuDatabase.menuAction())
         self.menuDatabase.addAction(self.actionRecriaDatabase)
-        self.menuSistema.addAction(self.actionCadUser)
         self.menuSistema.addAction(self.actionExitSystem)
         self.menuCadastro.addAction(self.actionClientes)
         self.menuCadastro.addAction(self.actionCadProdutos)
@@ -165,6 +164,7 @@ class Ui_MainWindow(object):
         self.menuCadastro.addAction(self.actionFabricantes)
         self.menuCadastro.addAction(self.actionTransportadoras)
         self.menuCadastro.addAction(self.actionAtividade)
+        self.menuCadastro.addAction(self.actionCadUser)
 
         self.retranslateUi(MainWindow)
 

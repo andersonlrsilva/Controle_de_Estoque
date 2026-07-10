@@ -1,12 +1,11 @@
 from PySide6.QtWidgets import QApplication, QWidget
-from ui import addAtividade
-from ui.addAtividade import Ui_AddAtividade
+from ui.addmarca import Ui_AddMarca
 from classes.database import Database
 
 
-class Addativdade(QWidget, Ui_AddAtividade):
+class Addmarca(QWidget, Ui_AddMarca):
     def __init__(self):
-        super(Addativdade, self).__init__()
+        super(Addmarca, self).__init__()
         self.setupUi(self)
         self.setWindowTitle('Cadastro de Produtos')
 
@@ -22,20 +21,14 @@ class Addativdade(QWidget, Ui_AddAtividade):
 
     # GRAVAR DADOS NO DB
     def gravadb(self):
-        try:
-            dados = self.txtAtividade.text()
-            db = Database()
-            con = db.connect()
-            cursor = con.cursor()
-            cursor.execute(
-                "INSERT INTO ATIVIDADE(RAMO) VALUES (%s)", (dados,))
-            con.commit()
-
-            print('gravei')
-
-            return
-        except:
-            print('erros')
+        marca = self.txtMarca.text()
+        site = self.txtSite.text()
+        db = Database()
+        grava = db.inserirMarca(site=site, marca=marca)
+        if grava == True:
+            print('ok')
+        else:
+            print('erro')
 
 
         # INICIA APP

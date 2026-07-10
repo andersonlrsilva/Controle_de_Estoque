@@ -93,6 +93,8 @@ class Uiaddcliente(QWidget, Ui_addCliente):
             print('deu ruim')
             return False
 
+        # VALIDA RAMO DE ATIVIDADE
+        ramo = self.txta
         else:
             return True
 

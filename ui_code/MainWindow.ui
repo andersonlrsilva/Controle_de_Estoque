@@ -128,7 +128,6 @@
     <property name="title">
      <string>Sistema</string>
     </property>
-    <addaction name="actionCadUser"/>
     <addaction name="actionExitSystem"/>
    </widget>
    <widget class="QMenu" name="menuCadastro">
@@ -141,6 +140,7 @@
     <addaction name="actionFabricantes"/>
     <addaction name="actionTransportadoras"/>
     <addaction name="actionAtividade"/>
+    <addaction name="actionCadUser"/>
    </widget>
    <addaction name="menuSistema"/>
    <addaction name="menuCadastro"/>

@@ -702,7 +702,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="cmbAtividade"/>
+      <widget class="QLineEdit" name="txtAtividade"/>
      </item>
     </layout>
    </widget>
