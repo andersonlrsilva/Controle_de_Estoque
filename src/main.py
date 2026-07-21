@@ -36,8 +36,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actionFabricantes.triggered.connect(self.cadFabricante)
         # Cadastro de Clientes
         self.actionClientes.triggered.connect(self.cadCliente)
-        # Cadastro de Atividades
-        self.actionAtividade.triggered.connect(self.cadAtividade)
 # MENU ESTOQUE >
         # Cadastro de produtos
         self.actionCadProdutos.triggered.connect(self.cadprod)
@@ -48,12 +46,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # FUNÇÕES DO SISTEMA
 
     # CADASTRO DE CLIENTES
-    def cadAtividade(self):
-        import addAtividade
-        self.cadcliente = addAtividade.Addativdade()
-        self.cadcliente.show()
 
-    # CADASTRO DE CLIENTES
     def cadCliente(self):
         import addCliente
         self.cadcliente = addCliente.Uiaddcliente()
@@ -87,7 +80,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def buscaAtualizacao(self):
         self.w = update.Update()
         self.w.show()
-
 
     # INICIA O PROGRAMA
 if __name__ == "__main__":

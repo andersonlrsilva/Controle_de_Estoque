@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QGroupBox, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDateEdit, QGroupBox,
+    QLabel, QLineEdit, QPushButton, QSizePolicy,
+    QVBoxLayout, QWidget)
 
 class Ui_addCliente(object):
     def setupUi(self, addCliente):
@@ -345,20 +345,20 @@ class Ui_addCliente(object):
         self.verticalLayoutWidget_12 = QWidget(self.GrupoCliente)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
         self.verticalLayoutWidget_12.setGeometry(QRect(10, 200, 221, 41))
-        self.verticalLayout_12 = QVBoxLayout(self.verticalLayoutWidget_12)
-        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.label_12 = QLabel(self.verticalLayoutWidget_12)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setMinimumSize(QSize(0, 2))
-        self.label_12.setMaximumSize(QSize(16777215, 12))
+        self.ramoAtividade = QVBoxLayout(self.verticalLayoutWidget_12)
+        self.ramoAtividade.setObjectName(u"ramoAtividade")
+        self.ramoAtividade.setContentsMargins(0, 0, 0, 0)
+        self.labelAtividade = QLabel(self.verticalLayoutWidget_12)
+        self.labelAtividade.setObjectName(u"labelAtividade")
+        self.labelAtividade.setMinimumSize(QSize(0, 2))
+        self.labelAtividade.setMaximumSize(QSize(16777215, 12))
 
-        self.verticalLayout_12.addWidget(self.label_12)
+        self.ramoAtividade.addWidget(self.labelAtividade)
 
-        self.comboBox_3 = QComboBox(self.verticalLayoutWidget_12)
-        self.comboBox_3.setObjectName(u"comboBox_3")
+        self.txtAtividade = QLineEdit(self.verticalLayoutWidget_12)
+        self.txtAtividade.setObjectName(u"txtAtividade")
 
-        self.verticalLayout_12.addWidget(self.comboBox_3)
+        self.ramoAtividade.addWidget(self.txtAtividade)
 
         self.verticalLayoutWidget_13 = QWidget(self.GrupoCliente)
         self.verticalLayoutWidget_13.setObjectName(u"verticalLayoutWidget_13")
@@ -366,17 +366,17 @@ class Ui_addCliente(object):
         self.verticalLayout_13 = QVBoxLayout(self.verticalLayoutWidget_13)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.label_13 = QLabel(self.verticalLayoutWidget_13)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setMinimumSize(QSize(0, 2))
-        self.label_13.setMaximumSize(QSize(16777215, 12))
+        self.labelClienteDesde = QLabel(self.verticalLayoutWidget_13)
+        self.labelClienteDesde.setObjectName(u"labelClienteDesde")
+        self.labelClienteDesde.setMinimumSize(QSize(0, 2))
+        self.labelClienteDesde.setMaximumSize(QSize(16777215, 12))
 
-        self.verticalLayout_13.addWidget(self.label_13)
+        self.verticalLayout_13.addWidget(self.labelClienteDesde)
 
-        self.lineEdit_12 = QLineEdit(self.verticalLayoutWidget_13)
-        self.lineEdit_12.setObjectName(u"lineEdit_12")
+        self.dateEditCliente = QDateEdit(self.verticalLayoutWidget_13)
+        self.dateEditCliente.setObjectName(u"dateEditCliente")
 
-        self.verticalLayout_13.addWidget(self.lineEdit_12)
+        self.verticalLayout_13.addWidget(self.dateEditCliente)
 
         self.verticalLayoutWidget_21 = QWidget(self.GrupoCliente)
         self.verticalLayoutWidget_21.setObjectName(u"verticalLayoutWidget_21")
@@ -408,8 +408,7 @@ class Ui_addCliente(object):
         QWidget.setTabOrder(self.txtRazoaSocial, self.cmbTipoCliente)
         QWidget.setTabOrder(self.cmbTipoCliente, self.txtCpfCnpj)
         QWidget.setTabOrder(self.txtCpfCnpj, self.txtIeRg)
-        QWidget.setTabOrder(self.txtIeRg, self.lineEdit_12)
-        QWidget.setTabOrder(self.lineEdit_12, self.lineEdit_7)
+        QWidget.setTabOrder(self.txtIeRg, self.lineEdit_7)
         QWidget.setTabOrder(self.lineEdit_7, self.lineEdit_6)
         QWidget.setTabOrder(self.lineEdit_6, self.lineEdit_8)
         QWidget.setTabOrder(self.lineEdit_8, self.lineEdit_9)
@@ -460,8 +459,8 @@ class Ui_addCliente(object):
         self.cmbTipoCliente.setItemText(1, QCoreApplication.translate("addCliente", u"Fisica", None))
 
         self.labelIeRg.setText(QCoreApplication.translate("addCliente", u"IE / RG", None))
-        self.label_12.setText(QCoreApplication.translate("addCliente", u"Ramo de Atividade", None))
-        self.label_13.setText(QCoreApplication.translate("addCliente", u"Cliente desde", None))
+        self.labelAtividade.setText(QCoreApplication.translate("addCliente", u"Ramo de Atividade", None))
+        self.labelClienteDesde.setText(QCoreApplication.translate("addCliente", u"Cliente desde", None))
         self.labelUf.setText(QCoreApplication.translate("addCliente", u"UF", None))
         self.cmboxUf.setItemText(0, QCoreApplication.translate("addCliente", u"RJ", None))
 

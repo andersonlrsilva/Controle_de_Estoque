@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QComboBox
 from ui.addcliente import Ui_addCliente
 from libAction.libdefault import nameValidation, validateDoc
 from classes.message import msgGeneric
-from PySide6.QtGui import QDoubleValidator
+from PySide6.QtGui import QDoubleValidator, QIntValidator
 from libAction.validador_ie import validaIeRg
 
 
@@ -94,7 +94,17 @@ class Uiaddcliente(QWidget, Ui_addCliente):
             return False
 
         # VALIDA RAMO DE ATIVIDADE
-        ramo = self.txta
+        ramo = nameValidation(self.txtAtividade.text())
+        if ramo is None:
+            return False
+        if ramo is False:
+            return False
+
+        clientedesde = self.dateEditCliente.text()
+
+        if clientedesde is None:
+
+            return
         else:
             return True
 

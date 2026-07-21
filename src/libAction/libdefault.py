@@ -82,3 +82,9 @@ def validateDoc(dados, tipo):
             return True, cnpj
         else:
             return False, 'CNPJ invalido'
+
+
+def dataValidator(dados):
+    data = str(dados)
+    novadata = data.replace("/", "-")
+    print(novadata)
