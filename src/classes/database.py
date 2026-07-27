@@ -85,7 +85,33 @@ class Database():
         except:
             return False
 
+    def gravaCliente(self, **kwargs):
+        try:
+            query = ("INSERT INTO CLIENTE (CODECLIENTE, NOMEFANTASIA,"
+                     "RAZAOSOCIAL,TIPOCLIENTE, CPF_CNPJ, IE_RG, UF,RAMO,"
+                     "DATACLIENTE)"
+                     "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)")
+            dados = (kwargs['code'], kwargs['fantasia'], kwargs['razao'],
+                     kwargs['tipocliente'], kwargs['cpf'], kwargs['ierg'],
+                     kwargs['uf'], kwargs['ramo'], kwargs["datacliente"])
+            con = self.connect()
+            cursor = con.cursor()  # type:ignore
+            cursor.execute(query, dados)
+            con.commit()
+            con.close()
+        except:
+            print('Erro ao salvar')
 
-if __name__ == '__main__':
-    db = Database()
-    db.inserirAtividade('swd', 'mghfkmg')
+
+# if __name__ == "__main__":
+#     db = Database()
+#     db.gravaCliente(code=123,
+#                     fantasia='qweqwe',
+#                     razao='wefwefd',
+#                     tipocliente='erfgerf',
+#                     cpf='12312',
+#                     ierg='12312',
+#                     uf='uf',
+#                     ramo='dddd',
+#                     datacliente='2022-01-01'
+#                     )

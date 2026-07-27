@@ -1,10 +1,14 @@
+import code
+from libAction.libAddFabric import estadoFabric
 from libAction.validador_ie import validar
 from PySide6.QtWidgets import QApplication, QWidget, QComboBox
-from ui.addcliente import Ui_addCliente
-from libAction.libdefault import nameValidation, validateDoc
+from ui.addCliente import Ui_addCliente
+from libAction.libdefault import nameValidation, validateDoc, dataValidator
 from classes.message import msgGeneric
+from classes.database import Database
 from PySide6.QtGui import QDoubleValidator, QIntValidator
 from libAction.validador_ie import validaIeRg
+from classes.database import Database
 
 
 class Uiaddcliente(QWidget, Ui_addCliente):
@@ -24,6 +28,12 @@ class Uiaddcliente(QWidget, Ui_addCliente):
         self.txtCpfCnpj.setValidator(QDoubleValidator())
         self.cmbTipoCliente.currentTextChanged.connect(self.mudaCliente)
         self.txtCpfCnpj.setMaxLength(0)
+        self.txtTel1.setValidator(QDoubleValidator())
+        self.txtTel1.setMaxLength(11)
+        self.txtTel2.setValidator(QDoubleValidator())
+        self.txtTel2.setMaxLength(11)
+        self.txtCel.setValidator(QDoubleValidator())
+        self.txtCel.setMaxLength(11)
 
         # AJUSTA CAMPO IE RG
         self.txtIeRg.setValidator(QDoubleValidator())
@@ -100,25 +110,50 @@ class Uiaddcliente(QWidget, Ui_addCliente):
         if ramo is False:
             return False
 
+        # VALIDA CAMPO CLIENTE DESDE
         clientedesde = self.dateEditCliente.text()
-
         if clientedesde is None:
-
             return
-        else:
-            return True
+
+        # VALIDA EMAIL
+        clientEmail = nameValidation(self.txtEndereco.text())
+
+        # VALIDA SITE
+        site = self.txtUrl.text()
+
+        # VALIDA DATA
+        data = dataValidator(self.dateEditCliente.text())
+        print(data)
+
+        # VALIDA ENDEREÇO
+        endereco = self.txtEndereco.text()
+        numero = self.txtNumero.text()
+        estado = self.cmbEstado.currentText()
+        cidade = self.txtCidade.text()
+        bairro = self.txtBairro.text()
+
+        return True
 
 # GRAVA CLIENTE
+
     def gravacliente(self):
         confirm = self.validacampos()
         if confirm is True:
-            print('salvei os dados')
-            print(self.txtNomeFantasia.text())
+            con = Database()
+            con.gravaCliente(code=self.txtCodeCliente.text(),
+                             fantasia=self.txtNomeFantasia.text(),
+                             razao=self.txtRazoaSocial.text(),
+                             tipocliente=self.cmbTipoCliente.currentIndex(),
+                             cpf=self.txtCpfCnpj.text(),
+                             ie_rg=self.txtIeRg.text(),
+                             uf=self.cmboxUf.currentText(),
+                             ramo=self.txtAtividade.text(),
+                             datacliente=data
+                             )
 
-        if confirm is False:
-            print('Deu erro')
 
 # SAIR DO SISTEMA
+
     def exit(self):
         exit()
 

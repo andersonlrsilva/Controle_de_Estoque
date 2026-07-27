@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 # Verifica se nomes estao vazios, possuem numeros ou caracteres invalidos
 
@@ -86,5 +87,6 @@ def validateDoc(dados, tipo):
 
 def dataValidator(dados):
     data = str(dados)
-    novadata = data.replace("/", "-")
-    print(novadata)
+    data_obj = datetime.strptime(data, "%d/%m/%Y")
+    data_str = data_obj.strftime("%Y-%m-%d")
+    return data_str

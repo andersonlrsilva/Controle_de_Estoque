@@ -36,7 +36,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_17">
      <item>
-      <widget class="QLabel" name="label_17">
+      <widget class="QLabel" name="labelEndereco">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -55,7 +55,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_16">
+      <widget class="QLineEdit" name="txtEndereco">
        <property name="text">
         <string/>
        </property>
@@ -72,9 +72,9 @@
       <height>41</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_16">
+    <layout class="QVBoxLayout" name="LayoutCidade">
      <item>
-      <widget class="QLabel" name="label_16">
+      <widget class="QLabel" name="labelCidade">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -93,7 +93,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_15"/>
+      <widget class="QLineEdit" name="txtCidade"/>
      </item>
     </layout>
    </widget>
@@ -108,7 +108,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_15">
      <item>
-      <widget class="QLabel" name="label_15">
+      <widget class="QLabel" name="labelBairro">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -127,7 +127,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_14"/>
+      <widget class="QLineEdit" name="txtBairro"/>
      </item>
     </layout>
    </widget>
@@ -161,7 +161,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_17"/>
+      <widget class="QLineEdit" name="txtNumero"/>
      </item>
     </layout>
    </widget>
@@ -195,7 +195,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_2"/>
+      <widget class="QComboBox" name="cmbEstado"/>
      </item>
     </layout>
    </widget>
@@ -229,7 +229,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_18"/>
+      <widget class="QLineEdit" name="txtCep"/>
      </item>
     </layout>
    </widget>
@@ -257,7 +257,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_8">
      <item>
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="labelTel1">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -276,7 +276,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_7">
+      <widget class="QLineEdit" name="txtTel1">
        <property name="text">
         <string/>
        </property>
@@ -295,7 +295,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_7">
      <item>
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="labelTel2">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -314,7 +314,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_6">
+      <widget class="QLineEdit" name="txtTel2">
        <property name="text">
         <string/>
        </property>
@@ -333,7 +333,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_9">
      <item>
-      <widget class="QLabel" name="label_9">
+      <widget class="QLabel" name="labelCelWhats">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -352,7 +352,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_8">
+      <widget class="QLineEdit" name="txtCel">
        <property name="text">
         <string/>
        </property>
@@ -390,7 +390,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_10">
+      <widget class="QLineEdit" name="txtUrl">
        <property name="text">
         <string/>
        </property>
@@ -585,7 +585,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_4">
+      <widget class="QLineEdit" name="txtCodeCliente">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -810,22 +810,22 @@
  </widget>
  <tabstops>
   <tabstop>txtNomeFantasia</tabstop>
-  <tabstop>lineEdit_4</tabstop>
+  <tabstop>txtCodeCliente</tabstop>
   <tabstop>txtRazoaSocial</tabstop>
   <tabstop>cmbTipoCliente</tabstop>
   <tabstop>txtCpfCnpj</tabstop>
   <tabstop>txtIeRg</tabstop>
-  <tabstop>lineEdit_7</tabstop>
-  <tabstop>lineEdit_6</tabstop>
-  <tabstop>lineEdit_8</tabstop>
+  <tabstop>txtTel1</tabstop>
+  <tabstop>txtTel2</tabstop>
+  <tabstop>txtCel</tabstop>
   <tabstop>lineEdit_9</tabstop>
-  <tabstop>lineEdit_10</tabstop>
-  <tabstop>lineEdit_16</tabstop>
-  <tabstop>lineEdit_17</tabstop>
-  <tabstop>lineEdit_18</tabstop>
-  <tabstop>comboBox_2</tabstop>
-  <tabstop>lineEdit_15</tabstop>
-  <tabstop>lineEdit_14</tabstop>
+  <tabstop>txtUrl</tabstop>
+  <tabstop>txtEndereco</tabstop>
+  <tabstop>txtNumero</tabstop>
+  <tabstop>txtCep</tabstop>
+  <tabstop>cmbEstado</tabstop>
+  <tabstop>txtCidade</tabstop>
+  <tabstop>txtBairro</tabstop>
   <tabstop>btnGravar</tabstop>
   <tabstop>btnCancelar</tabstop>
  </tabstops>
